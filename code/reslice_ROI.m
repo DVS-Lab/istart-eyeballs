@@ -2,7 +2,7 @@
 
 clear; close all;
 
-addpath /Users/jameswyngaarden/Applications/spm12/;
+addpath /data/tools/spm12/;
 savepath;
 
 spm fmri
