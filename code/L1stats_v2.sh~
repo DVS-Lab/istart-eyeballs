@@ -38,7 +38,7 @@ if [ "$TASK" == "mid" -o "$TASK" == "ugdg" ]; then
 elif [ "$TASK" == "doors" -o "$TASK" == "socialdoors" ]; then
 	EVDIR=${maindir}/derivatives/fsl/EVfiles/sub-${sub}/${TASK}/run-${run}
 else
-	EVDIR=/data/projects/istart-${TASK}/derivatives/fsl/EVfiles/sub-${sub}/${TASK}/run-${run}
+	EVDIR=${maindir}/derivatives/fsl/EVfiles/sub-${sub}/${TASK}/run-${run}
 fi
 
 # empty EVs (specific to this study)

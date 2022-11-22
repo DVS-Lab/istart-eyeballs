@@ -35,10 +35,11 @@ fi
 # specify zero-padding or not or EVfiles
 if [ "$TASK" == "mid" -o "$TASK" == "ugdg" ]; then
 	EVDIR=${maindir}/derivatives/fsl/EVfiles/sub-${sub}/${TASK}/run-0${run}
-elif [ "$TASK" == "doors" -o "$TASK" == "socialdoors" ]; then
+elif [ "$TASK" == "doors" -o "$TASK" == "socialdoors" -o "$TASK" == "sharedreward" ]; then
 	EVDIR=${maindir}/derivatives/fsl/EVfiles/sub-${sub}/${TASK}/run-${run}
 else
-	EVDIR=${maindir}/derivatives/fsl/EVfiles/sub-${sub}/${TASK}/run-${run}
+	echo "enter proper task"
+	exit
 fi
 
 # empty EVs (specific to this study)

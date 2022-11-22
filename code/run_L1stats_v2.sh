@@ -6,9 +6,9 @@ basedir="$(dirname "$scriptdir")"
 nruns=1
 
 #for task in socialdoors; do
-for task in ugdg; do
+for task in mid; do
 	for ppi in "eyeball_left"; do
-		for sub in 3223; do
+		for sub in 1019; do
 		#for sub in `cat ${basedir}/code/newsubs.txt`; do
 	  		for run in `seq $nruns`; do
 
