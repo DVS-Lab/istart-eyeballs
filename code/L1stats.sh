@@ -31,7 +31,12 @@ if [ ! -e $CONFOUNDEVS ]; then
 	echo "missing confounds: $CONFOUNDEVS " >> ${maindir}/re-runL1.log
 	exit # exiting to ensure nothing gets run without confounds
 fi
-EVDIR=${maindir}/derivatives/fsl/EVfiles/sub-${sub}/${TASK}/run-${run} #change to maindir TO FIX: no zero pad
+
+if [ "$TASK" == "mid" ]; then
+	EVDIR=/data/projects/istart-mid/derivatives/fsl/EVfiles/sub-${sub}/${TASK}/run-0${run} #change to maindir TO FIX: no zero pad
+elif [ "$TASK" == "ugdg" ]; then
+	EVDIR=/data/projects/istart-ugdg/derivatives/fsl/EVfiles/sub-${sub}/${TASK}/run-0${run}
+fi
 
 # empty EVs (specific to this study)
 EV_MISSED_TRIAL=${EVDIR}_decision-missed.txt
@@ -161,4 +166,3 @@ else # otherwise, do activation and seed-based ppi
 	rm -rf ${OUTPUT}.feat/stats/corrections.nii.gz
 	rm -rf ${OUTPUT}.feat/stats/threshac1.nii.gz
 	rm -rf ${OUTPUT}.feat/filtered_func_data.nii.gz
-done
