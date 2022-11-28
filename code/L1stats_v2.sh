@@ -38,7 +38,7 @@ if [ "$TASK" == "mid" -o "$TASK" == "ugdg" ]; then
 elif [ "$TASK" == "doors" -o "$TASK" == "socialdoors" -o "$TASK" == "sharedreward" ]; then
 	EVDIR=${maindir}/derivatives/fsl/EVfiles/sub-${sub}/${TASK}/run-${run}
 else
-	echo "enter proper task"
+	echo "Task entered incorrectly; enter a proper ISTART taskname"
 	exit
 fi
 
