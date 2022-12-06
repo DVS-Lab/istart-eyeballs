@@ -5,4 +5,5 @@ clear; close all;
 addpath /data/tools/spm12/;
 savepath;
 
-spm fmri
+spm fmri0
+

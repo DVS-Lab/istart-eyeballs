@@ -869,7 +869,7 @@ set fmri(ortho7.14) 0
 set fmri(ortho7.15) 0
 
 # EV 8 title
-set fmri(evtitle8) "PHYS"
+set fmri(evtitle8) "nacc"
 
 # Basic waveform shape (EV 8)
 # 0 : Square
