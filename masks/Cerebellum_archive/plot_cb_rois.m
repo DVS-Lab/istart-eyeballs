@@ -7,7 +7,7 @@ clc
 
 % Import data
 %roidir='/data/projects/istart-eyeballs/masks/Cerebellum_archive/';
-roidir='~/Documents/Github/istart-eyeballs/masks/Cerebellum_archive/'
+roidir='~/Documents/Github/istart-eyeballs/masks/Cerebellum_archive/';
 [~,~,data]=xlsread([roidir 'roi_volumes2.xls']);
 data=data(:,1:2);
 
@@ -65,8 +65,10 @@ boxplot(vols)
 % Plot volumes; bar graph
 figure
 bar(vols)
-xticks(1:36)
-xticklabels(["L IV", "R IV", "L V", "R V", "L VI", "R VI", "Vermis VI", "L Crus I", "R Crus I", "Vermis Crus I", "L Crus II", "R Crus II", "Vermis Crus II", "L VIIb", "R VIIb", "Vermis VIIb", "L VIIIa", "R VIIIa", "Vermis VIIIa", "L VIIIb", "R VIIIb", "Vermis VIIIb", "L IX", "R IX", "Vermis IX", "L X", "R X", "Vermis X"]);
+xticks(1:26)
+xticklabels(["L IV", "R IV", "L V", "R V", "L VI", "R VI", "Vermis VI", "L Crus I", "R Crus I", "L Crus II", "R Crus II", "Vermis Crus II", "L VIIb", "R VIIb", "L VIIIa", "R VIIIa", "Vermis VIIIa", "L VIIIb", "R VIIIb", "Vermis VIIIb", "L IX", "R IX", "Vermis IX", "L X", "R X", "Vermis X"]);
 ylabel("Voxels")
+yline(mean(vols),'--','Mean')
+yline((mean(vols))*.10,'--','10% Threshold')
 
 thresh=(mean(nvols))*.10;
