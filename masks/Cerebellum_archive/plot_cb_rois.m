@@ -6,7 +6,8 @@ clc
 % Jimmy Wyngaarden, 6 Dec 22
 
 % Import data
-roidir='/data/projects/istart-eyeballs/masks/Cerebellum_archive/';
+%roidir='/data/projects/istart-eyeballs/masks/Cerebellum_archive/';
+roidir='~/Documents/Github/istart-eyeballs/masks/Cerebellum_archive/'
 [~,~,data]=xlsread([roidir 'roi_volumes2.xls']);
 data=data(:,1:2);
 
@@ -68,4 +69,4 @@ xticks(1:36)
 xticklabels(["L IV", "R IV", "L V", "R V", "L VI", "R VI", "Vermis VI", "L Crus I", "R Crus I", "Vermis Crus I", "L Crus II", "R Crus II", "Vermis Crus II", "L VIIb", "R VIIb", "Vermis VIIb", "L VIIIa", "R VIIIa", "Vermis VIIIa", "L VIIIb", "R VIIIb", "Vermis VIIIb", "L IX", "R IX", "Vermis IX", "L X", "R X", "Vermis X"]);
 ylabel("Voxels")
 
-mean(nvols)
+thresh=(mean(nvols))*.10;
