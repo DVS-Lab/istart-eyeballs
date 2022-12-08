@@ -5,10 +5,10 @@ scriptdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 maindir="$(dirname "$scriptdir")"
 
 # the "type" variable below is setting a path inside the main script
-for type in "ppi_seed-eyeball_left"; do
+for type in "ppi_seed-eyeball_left" "ppi_seed-eyeball_right"; do
 	for sub in `cat ${scriptdir}/newsubs.txt`; do
 	#for sub in 1001; do
-		for task in "sharedreward"; do #"sharedreward"; do
+		for task in "ugdg"; do #"sharedreward"; do
 
 			# Manages the number of jobs and cores
   			SCRIPTNAME=${maindir}/code/L2stats.sh

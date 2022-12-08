@@ -8,7 +8,7 @@ maindir="$(dirname "$scriptdir")"
 sub=$1
 type=$2
 task=sharedreward # edit if necessary
-sm=6 # edit if necessary
+sm=5 # edit if necessary
 logfile=$3
 model=1
 

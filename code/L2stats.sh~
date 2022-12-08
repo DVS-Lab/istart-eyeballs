@@ -32,7 +32,8 @@ NCOPES=5
 ITEMPLATE=${maindir}/templates/L2_task-${task}_model-${model}_type-ppi.fsf
 let NCOPES=${NCOPES}+1 # add 1 since we tend to only have one extra contrast for PPI
 
-INPUT=${MAINOUTPUT}/L1_task-${task}_model-${model}_type-${type}_run-1_sm-${sm}.feat
+INPUT1=${MAINOUTPUT}/L1_task-${task}_model-${model}_type-${type}_run-1_sm-${sm}.feat
+INPUT2=${MAINOUTPUT}/L1_task-${task}_model-${model}_type-${type}_run-2_sm-${sm}.feat
 
 # --- end EDIT HERE end: exceptions and conditionals for the task; need to exclude bad/missing runs
 
@@ -48,7 +49,8 @@ else
 	# set output template and run template-specific analyses
 	OTEMPLATE=${MAINOUTPUT}/L2_task-${task}_model-${model}_type-${type}.fsf
 	sed -e 's@OUTPUT@'$OUTPUT'@g' \
-	-e 's@INPUT@'$INPUT'@g' \
+	-e 's@INPUT1@'$INPUT1'@g' \
+	-e 's@INPUT2@'$INPUT2'@g' \
 	<$ITEMPLATE> $OTEMPLATE
 	feat $OTEMPLATE
 

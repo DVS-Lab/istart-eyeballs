@@ -15,7 +15,7 @@ maindir="$(dirname "$scriptdir")"
 istartdatadir=/data/projects/istart-data
 
 # study-specific inputs
-sm=6
+sm=5
 sub=$1
 run=$2
 ppi=$3 # 0 for activation, otherwise seed region or network
