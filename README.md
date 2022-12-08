@@ -1,5 +1,5 @@
 # ISTART-eyeballs: Characterizing the effects of Nyquist ghosting in task-dependent cerebellar connectivity
-This repository contains code related to our project investigating the effects of nyquist ghosting from the eyeballs on task-dependent signal in the cerebellum. All hypotheses and analysis plans were pre-registered on osf in fall semester 2022 and analyses commenced on shortly thereafter. Imaging data will be shared via [OpenNeuro][openneuro] when the manuscript is posted on bioRxiv.
+This repository contains code related to our project investigating the effects of nyquist ghosting from the eyeballs on task-dependent signal in the cerebellum. All hypotheses and analysis plans were pre-registered on osf (https://osf.io/sd395/) in fall semester 2022 and analyses commenced on shortly thereafter. Imaging data will be shared via [OpenNeuro][openneuro] when the manuscript is posted on bioRxiv.
 
 
 ## A few prerequisites and recommendations
