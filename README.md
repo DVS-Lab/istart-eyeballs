@@ -1,5 +1,5 @@
-# ISTART-socdoors: Social Doors Task Data and Analyses
-This repository contains code related to our in prep project related to shared reward and aging. All hypotheses and analysis plans were pre-registered on AsPredicted in fall semester 2019 and data collection commenced on shortly thereafter. Imaging data will be shared via [OpenNeuro][openneuro] when the manuscript is posted on bioRxiv.
+# ISTART-eyeballs: Characterizing the effects of Nyquist ghosting in task-dependent cerebellar connectivity
+This repository contains code related to our project investigating the effects of nyquist ghosting from the eyeballs on task-dependent signal in the cerebellum. All hypotheses and analysis plans were pre-registered on osf (https://osf.io/sd395/) in fall semester 2022 and analyses commenced on shortly thereafter. Imaging data will be shared via [OpenNeuro][openneuro] when the manuscript is posted on bioRxiv.
 
 
 ## A few prerequisites and recommendations
@@ -15,7 +15,6 @@ This repository contains code related to our in prep project related to shared r
   - `code`: analysis code
   - `templates`: fsf template files used for FSL analyses
   - `masks`: images used as masks, networks, and seed regions in analyses
-  - `stimuli`: psychopy scripts and matlab scripts for delivering stimuli and organizing output
   - `derivatives`: derivatives from analysis scripts, but only text files (re-run script to regenerate larger outputs)
 
 
@@ -41,11 +40,6 @@ bash code/run_gen3colfiles.sh
 # run statistics
 bash code/run_L1stats.sh
 bash code/run_L2stats.sh
-bash code/run_L3stats.sh
 ```
-
-
-## Acknowledgments
-This work was supported, in part, by grants from the National Institutes of Health (R03-DA046733 to DVS and R15-MH122927 to DSF). DVS was a Research Fellow of the Public Policy Lab at Temple University during the preparation of the manuscript (2019-2020 academic year).
 
 [openneuro]: https://openneuro.org/
