@@ -26,7 +26,7 @@ for ppi in "eyeball_left"; do  #in 0 NAcc; do # putting 0 first will indicate "a
 
 	  	# Manages the number of jobs and cores
 	  	SCRIPTNAME=${basedir}/code/L1stats_mid.sh
-	  	NCORES=4
+	  	NCORES=10
 	  	while [ $(ps -ef | grep -v grep | grep $SCRIPTNAME | wc -l) -ge $NCORES ]; do
 	    		sleep 5s
 	  	done

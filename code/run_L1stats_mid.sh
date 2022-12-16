@@ -6,7 +6,7 @@ basedir="$(dirname "$scriptdir")"
 nruns=2
 task=mid # edit if necessary
 
-for ppi in "eyeball_left"; do  #in 0 NAcc; do # putting 0 first will indicate "activation"
+for ppi in "eyeball_right"; do  #in 0 NAcc; do # putting 0 first will indicate "activation"
 	
 	#for sub in 1001; do
 	for sub in `cat ${scriptdir}/newsubs.txt`; do #`cat ${scriptdir}/_newsubs.txt`; do #1300; do #
