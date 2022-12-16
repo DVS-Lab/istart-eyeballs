@@ -763,3 +763,109 @@ missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-3220/L
 missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-3220/L1_task-ugdg_model-1_type-ppi_seed-eyeball_right_run-2_sm-5 
 missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-3223/L1_task-ugdg_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
 missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-3223/L1_task-ugdg_model-1_type-ppi_seed-eyeball_right_run-2_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1001/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1001/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-2_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1003/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-1003/sub-1003_task-mid_run-2_desc-fslConfounds.tsv 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1004/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1004/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-2_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1006/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1006/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-2_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1009/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1009/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-2_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1010/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1010/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-2_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1011/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1011/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-2_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1012/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1012/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-2_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1013/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1013/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-2_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1015/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1015/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-2_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1016/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1016/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-2_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1019/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1019/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-2_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1021/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1021/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-2_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1242/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-1242/sub-1242_task-mid_run-2_desc-fslConfounds.tsv 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1243/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1243/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-2_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1244/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1244/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-2_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1245/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1245/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-2_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1247/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1247/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-2_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1248/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1248/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-2_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1249/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1249/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-2_sm-5 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-1251/sub-1251_task-mid_run-1_desc-fslConfounds.tsv 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-1251/sub-1251_task-mid_run-2_desc-fslConfounds.tsv 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1253/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1253/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-2_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1255/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1255/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-2_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1276/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-1276/sub-1276_task-mid_run-2_desc-fslConfounds.tsv 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1282/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-1282/sub-1282_task-mid_run-2_desc-fslConfounds.tsv 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1286/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1286/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-2_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1294/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-1294/sub-1294_task-mid_run-2_desc-fslConfounds.tsv 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1300/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1300/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-2_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1301/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1301/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-2_sm-5 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1302/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-1302/sub-1302_task-mid_run-2_desc-fslConfounds.tsv 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-1303/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-1303/sub-1303_task-mid_run-2_desc-fslConfounds.tsv 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-3101/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-3101/sub-3101_task-mid_run-2_desc-fslConfounds.tsv 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-3116/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-3116/sub-3116_task-mid_run-2_desc-fslConfounds.tsv 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-3122/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-3122/sub-3122_task-mid_run-2_desc-fslConfounds.tsv 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-3125/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-3125/sub-3125_task-mid_run-2_desc-fslConfounds.tsv 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-3140/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-3140/sub-3140_task-mid_run-2_desc-fslConfounds.tsv 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-3143/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-3143/sub-3143_task-mid_run-2_desc-fslConfounds.tsv 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-3152/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-3152/sub-3152_task-mid_run-2_desc-fslConfounds.tsv 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-3166/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-3166/sub-3166_task-mid_run-2_desc-fslConfounds.tsv 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-3167/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-3167/sub-3167_task-mid_run-2_desc-fslConfounds.tsv 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-3170/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-3170/sub-3170_task-mid_run-2_desc-fslConfounds.tsv 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-3173/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-3173/sub-3173_task-mid_run-2_desc-fslConfounds.tsv 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-3176/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-3176/sub-3176_task-mid_run-2_desc-fslConfounds.tsv 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-3189/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-3189/sub-3189_task-mid_run-2_desc-fslConfounds.tsv 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-3190/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-3190/sub-3190_task-mid_run-2_desc-fslConfounds.tsv 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-3199/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-3199/sub-3199_task-mid_run-2_desc-fslConfounds.tsv 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-3200/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-3200/sub-3200_task-mid_run-2_desc-fslConfounds.tsv 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-3206/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-3206/sub-3206_task-mid_run-2_desc-fslConfounds.tsv 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-3210/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-3210/sub-3210_task-mid_run-2_desc-fslConfounds.tsv 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-3212/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-3212/sub-3212_task-mid_run-2_desc-fslConfounds.tsv 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-3218/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-3218/sub-3218_task-mid_run-2_desc-fslConfounds.tsv 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-3220/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-3220/sub-3220_task-mid_run-2_desc-fslConfounds.tsv 
+missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-3223/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-3223/sub-3223_task-mid_run-2_desc-fslConfounds.tsv 
