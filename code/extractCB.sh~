@@ -8,11 +8,11 @@ scriptdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 basedir="$(dirname "$scriptdir")"
 
 # Loop
-for task in mid; do
-#for task in doors socialdoors mid sharedreward ugdg; do
+#for task in mid; do
+for task in doors socialdoors mid sharedreward ugdg; do
 	echo ${task}	
-	#for cb in `cat ${basedir}/code/CB_ROIs.txt`; do 
-	for cb in "Crus_II"; do
+	for cb in `cat ${basedir}/code/CB_ROIs.txt`; do 
+	#for cb in "Crus_II"; do
 		echo ${cb}		
 	
 			for sub in `cat ${basedir}/code/gsr_data_${task}.csv`; do

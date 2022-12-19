@@ -8,3 +8,7 @@ VIIIa
 VIIIb
 IX
 X
+Vermis_VI
+Vermis_VIIIa
+Vermis_VIIIb
+Vermis_IX
