@@ -869,3 +869,11 @@ missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-3220/L1_
 missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-3220/sub-3220_task-mid_run-2_desc-fslConfounds.tsv 
 missing feat output: /data/projects/istart-eyeballs/derivatives/fsl/sub-3223/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
 missing confounds: /data/projects/istart-data/derivatives/fsl/confounds/sub-3223/sub-3223_task-mid_run-2_desc-fslConfounds.tsv 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-3101/L1_task-doors_model-1_type-ppi_seed-eyeball_left_run-1_sm-5 
+missing confounds: /data/projects/istart-eyeballs/derivatives/fsl/confounds/sub-3101/sub-3101_task-doors_run-2_desc-fslConfounds.tsv 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-3101/L1_task-doors_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-eyeballs/derivatives/fsl/confounds/sub-3101/sub-3101_task-doors_run-2_desc-fslConfounds.tsv 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-3101/L1_task-socialdoors_model-1_type-ppi_seed-eyeball_left_run-1_sm-5 
+missing confounds: /data/projects/istart-eyeballs/derivatives/fsl/confounds/sub-3101/sub-3101_task-socialdoors_run-2_desc-fslConfounds.tsv 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-3101/L1_task-socialdoors_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-eyeballs/derivatives/fsl/confounds/sub-3101/sub-3101_task-socialdoors_run-2_desc-fslConfounds.tsv 
