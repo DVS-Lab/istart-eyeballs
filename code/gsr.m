@@ -10,7 +10,7 @@ clc
 codedir = '~/Documents/Github/istart-eyeballs/code/';
 addpath(codedir)
 %datadir = '/data/projects/istart-eyeballs/derivatives/';
-datadir = '~/Documents/Github/istart-eyeballs/derivatives/';
+datadir = '~/Documents/Github/istart-eyeballs/code/';
 addpath(datadir)
 
 task = {'doors', 'socialdoors', 'mid', 'ugdg', 'sharedreward'};
@@ -23,30 +23,36 @@ for i = 1:length(task)
     subs = unique(T.ID);
 
     % Create outline for final df
-    final_df=zeros(length(subs),3);
+    final_df=zeros(length(subs),5);
     
     % Average across runs for subs that have both
     final_df(1,1) = T.ID(1);
     final_df(1,2) = T.gsr_y(1);
-    final_df(1,3) = T.run(1);
+    final_df(1,3) = T.tsnr(1);
+    final_df(1,4) = T.fd_mean(1);
+    final_df(1,5) = T.run(1);
     x = 2;
 
     for t = 2:length(T.ID)
         if T.ID(t) == T.ID(t-1)
             final_df(x-1,1) = T.ID(t);
             final_df(x-1,2) = mean(T.gsr_y(t-1:t));
-            final_df(x-1,3) = 3;
+            final_df(x-1,3) = mean(T.tsnr(t-1:t));
+            final_df(x-1,4) = mean(T.fd_mean(t-1:t));
+            final_df(x-1,5) = 3;
         else
             final_df(x,1) = T.ID(t);
             final_df(x,2) = T.gsr_y(t);
-            final_df(x,3) = T.run(t);
+            final_df(x,3) = T.tsnr(t);
+            final_df(x,4) = T.fd_mean(t);
+            final_df(x,5) = T.run(t);
             x = x+1;
         end
     end
    
     % Write labels for final_df
     final_df = array2table(final_df);
-    final_df.Properties.VariableNames(1:3)={'Sub', 'gsr_y', 'run'};
+    final_df.Properties.VariableNames(1:5)={'Sub', 'gsr_y', 'tsnr', 'fd_mean', 'run'};
 
     filename = ['gsr_data_' task{i} '.xlsx'];
     writetable(final_df,filename,'Sheet',1,'Range','A1')

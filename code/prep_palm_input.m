@@ -14,21 +14,22 @@ addpath(codedir)
 datadir = '~/Documents/Github/istart-eyeballs/derivatives/extractions/';
 addpath(datadir)
 
-two_stim_df_left=zeros(53,5);
-two_stim_df_right=zeros(53,5);
-two_stim_df_left_final=zeros(53,15);
-two_stim_df_right_final=zeros(53,15);
-
-one_stim_df_left=zeros(53,4);
-one_stim_df_right=zeros(53,4);
-one_stim_df_left_final=zeros(53,15);
-one_stim_df_right_final=zeros(53,15);
-
 sub = {'1001', '1003', '1004', '1006', '1009', '1010', '1011', '1012', '1013', '1015', '1016', '1019', ...
     '1021', '1242', '1243', '1244', '1245', '1247', '1248', '1249', '1251', '1253', '1255', '1276', '1282', ...
-    '1286', '1294', '1300', '1301', '1302', '1303', '3101', '3116', '3122', '3125', '3140', '3143', '3152', ...
+    '1286', '1294', '1300', '1301', '1302', '1303', '3116', '3122', '3125', '3140', '3143', '3152', ...
     '3166', '3167', '3170', '3173', '3176', '3189', '3190', '3199', '3200', '3206', '3210', '3212', '3218', ...
     '3220', '3223'};
+% 3101
+
+two_stim_df_left=zeros(length(sub),5);
+two_stim_df_right=zeros(length(sub),5);
+two_stim_df_left_final=zeros(length(sub),15);
+two_stim_df_right_final=zeros(length(sub),15);
+
+one_stim_df_left=zeros(length(sub),4);
+one_stim_df_right=zeros(length(sub),4);
+one_stim_df_left_final=zeros(length(sub),15);
+one_stim_df_right_final=zeros(length(sub),15);
 
 cb = {'IV', 'V', 'VI', 'Crus_I', 'Crus_II', 'VIIb', 'VIIIa', 'VIIIb', ...
     'IX', 'X', 'Vermis_VI', 'Vermis_VIIIa', 'Vermis_VIIIb', 'Vermis_IX'};
@@ -129,6 +130,11 @@ final_df_left_table.Properties.VariableNames(1:15) = {'Sub', 'IV', 'V', ...
     'VI', 'Crus_I', 'Crus_II', 'VIIb', 'VIIIa', 'VIIIb', 'IX', 'X', ...
     'Vermis_VI', 'Vermis_VIIIa', 'Vermis_VIIIb', 'Vermis_IX'};
 
+final_df_left = final_df_left(:,2:15);
+    
+filename = 'extraction_data_two-one_left.xlsx';
+writematrix(final_df_left,filename,'Sheet',1,'Range','A1');
+
 %% Read in data for two stim df right
 for c = 1:length(cb)
     for s = 1:length(sub)
@@ -210,15 +216,87 @@ for c = 1:length(cb)
 
         one_stim_df_right(s,4) = nanmean(one_stim_df_right(s,2:3));
     end
-    one_stim_df_left_final(:,1)=one_stim_df_right(:,1);
-    one_stim_df_left_final(:,c+1)=one_stim_df_right(:,4);
+    one_stim_df_left_final(:,1) = one_stim_df_right(:,1);
+    one_stim_df_left_final(:,c+1) = one_stim_df_right(:,4);
 end
 
-final_df_right=two_stim_df_right_final-one_stim_df_right_final;
-final_df_right(:,1)=two_stim_df_right_final(:,1);
+final_df_right = two_stim_df_right_final-one_stim_df_right_final;
+final_df_right(:,1) = two_stim_df_right_final(:,1);
 
 % Write labels
 final_df_right_table = array2table(final_df_right);
 final_df_right_table.Properties.VariableNames(1:15) = {'Sub', 'IV', 'V', ...
     'VI', 'Crus_I', 'Crus_II', 'VIIb', 'VIIIa', 'VIIIb', 'IX', 'X', ...
     'Vermis_VI', 'Vermis_VIIIa', 'Vermis_VIIIb', 'Vermis_IX'};
+
+final_df_right = final_df_right(:,2:15);
+
+filename = 'extraction_data_two-one_right.xlsx';
+writematrix(final_df_right,filename,'Sheet',1,'Range','A1');
+
+%% Write covariate info
+
+% two_stim_cov_df_left=zeros(length(sub),5);
+% two_stim_cov_df_right=zeros(length(sub),5);
+% two_stim_cov_df_left_final=zeros(length(sub),15);
+% two_stim_cov_df_right_final=zeros(length(sub),15);
+% 
+% one_stim_cov_df_left=zeros(length(sub),4);
+% one_stim_cov_df_right=zeros(length(sub),4);
+% one_stim_cov_df_left_final=zeros(length(sub),15);
+% one_stim_cov_df_right_final=zeros(length(sub),15);
+% 
+% % Assign sub ID
+% two_stim_cov_df_left(s,1) = str2double(sub{s});
+% 
+% % Read data
+% sourcedata_doors = fullfile([codedir 'gsr_data_doors.csv']);
+% cov_doors = readtable(sourcedata_doors,'FileType','delimitedtext');
+% cov_doors = cov_doors(cov_doors.ID~=3101);
+%     
+% sourcedata_socialdoors = fullfile([codedir 'gsr_data_socialdoors.csv']);
+% cov_socialdoors = readtable(sourcedata_socialdoors,'FileType','delimitedtext');
+%     
+% sourcedata_ugdg = fullfile([codedir 'gsr_data_ugdg.csv']);
+% cov_ugdg = readtable(sourcedata_ugdg,'FileType','delimitedtext');
+%     
+% two_stim_cov_df_left(:,1) = cov_doors.ID;
+% 
+% % gsr doors, socialdoors, ugdg (avg)
+% two_stim_cov_df_left(:,2) = cov_doors.gsr_y;
+% two_stim_cov_df_left(:,3) = cov_socialdoors.gsr_y;
+% two_stim_cov_df_left(:,4) = cov_ugdg.gsr_y;
+% two_stim_cov_df_left(:,5) = mean(two_stim_cov_df_left(:,2:5));
+% 
+% % tsnr doors, socialdoors, ugdg (avg, then take contrast)
+% two_stim_cov_df_left(:,6) = cov_doors(:,3);
+% two_stim_cov_df_left(:,7) = cov_socialdoors(:,3);
+% two_stim_cov_df_left(:,8) = cov_ugdg(:,3);
+% two_stim_cov_df_left(:,9) = mean(cov_doors(:,6:8));
+% 
+% % fd_mean doors, socialdoors, ugdg (avg, then take contrast)
+% two_stim_cov_df_left(:,10) = cov_doors(:,4);
+% two_stim_cov_df_left(:,11) = cov_socialdoors(:,4);
+% two_stim_cov_df_left(:,12) = cov_ugdg(:,4);
+% two_stim_cov_df_left(:,13) = mean(cov_doors(:,10:12));
+
+%for s = 1:length(sub)       
+%end
+
+% one_stim_df_left_final(:,1)=one_stim_df_left(:,1);
+% one_stim_df_left_final(:,c+1)=one_stim_df_left(:,4);
+% 
+% 
+% final_df_left=two_stim_df_left_final-one_stim_df_left_final;
+% final_df_left(:,1)=two_stim_df_left_final(:,1);
+% 
+% % Write labels
+% final_df_left_table = array2table(final_df_left);
+% final_df_left_table.Properties.VariableNames(1:15) = {'Sub', 'IV', 'V', ...
+%     'VI', 'Crus_I', 'Crus_II', 'VIIb', 'VIIIa', 'VIIIb', 'IX', 'X', ...
+%     'Vermis_VI', 'Vermis_VIIIa', 'Vermis_VIIIb', 'Vermis_IX'};
+% 
+% final_df_left = final_df_left(:,2:15);
+%     
+% filename = 'extraction_data_two-one_left.xlsx';
+% writematrix(final_df_left,filename,'Sheet',1,'Range','A1');
