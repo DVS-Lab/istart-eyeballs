@@ -9,16 +9,17 @@ basedir="$(dirname "$scriptdir")"
 
 # Loop
 #for task in mid; do
-for task in doors socialdoors mid sharedreward ugdg; do
+for task in doors socialdoors; do #mid sharedreward ugdg; do
 	echo ${task}	
 	for cb in `cat ${basedir}/code/CB_ROIs.txt`; do 
 	#for cb in "Crus_II"; do
 		echo ${cb}		
 	
 			for sub in `cat ${basedir}/code/gsr_data_${task}.csv`; do
+			#for sub in 3101; do			
 				
 				# Read in sub ID, gsr, & usable run (1=1, 2=2, 3=both)				
-				IFS=',' read sub gsr run <<< $sub
+				IFS=',' read run gsr tsnr fd_mean sub <<< $sub
 				echo ${sub} ${run}
 				
 				# Specify phys cope based on task
