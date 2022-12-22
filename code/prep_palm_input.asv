@@ -247,7 +247,6 @@ xticklabels({'IV', 'V', 'VI', 'Crus I', 'Crus II', 'VIIb', 'VIIIa', 'VIIIb', ...
 ylabel('zstat');
 xlabel('CB Subregion');
 xline([1.5 2.5 3.5 4.5 5.5 6.5 7.5 8.5 9.5 10.5 11.5 12.5 13.5]);
-ylim([-.5 .2]);
 leg = {'Doors','Socialdoors','UGDG','MID','SharedReward'};
 legend(leg,'Location','southwest');
 
@@ -428,11 +427,11 @@ for c = 1:length(cb)
         graph_df_right(1,((c-1)*5)+3) = nanmean(graph_data_df_right(:,4));
         graph_df_right(1,((c-1)*5)+4) = nanmean(graph_data_df_right(:,5));
         graph_df_right(1,((c-1)*5)+5) = nanmean(graph_data_df_right(:,6));
-        graph_df_right(2,((c-1)*5+1)) = 1;
-        graph_df_right(2,((c-1)*5)+2) = 2;
-        graph_df_right(2,((c-1)*5)+3) = 3;
-        graph_df_right(2,((c-1)*5)+4) = 4;
-        graph_df_right(2,((c-1)*5)+5) = 5;
+        graph_df_left(2,((c-1)*5+1)) = 1;
+        graph_df_left(2,((c-1)*5)+2) = 2;
+        graph_df_left(2,((c-1)*5)+3) = 3;
+        graph_df_left(2,((c-1)*5)+4) = 4;
+        graph_df_left(2,((c-1)*5)+5) = 5;
     end
     fclose all
 end
@@ -450,7 +449,6 @@ xticklabels({'IV', 'V', 'VI', 'Crus I', 'Crus II', 'VIIb', 'VIIIa', 'VIIIb', ...
 ylabel('zstat');
 xlabel('CB Subregion');
 xline([1.5 2.5 3.5 4.5 5.5 6.5 7.5 8.5 9.5 10.5 11.5 12.5 13.5]);
-ylim([-.5 .2]);
 leg = {'Doors','Socialdoors','UGDG','MID','SharedReward'};
 legend(leg,'Location','southwest');
 
