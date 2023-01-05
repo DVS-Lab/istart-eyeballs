@@ -22,13 +22,13 @@ sub = {'1001', '1003', '1004', '1006', '1009', '1010', '1011', '1012', '1013', '
 % 3101
 
 % Preallocate dataframes
-two_stim_df_left=zeros(length(sub),5);
-two_stim_df_right=zeros(length(sub),5);
+two_stim_df_left=zeros(length(sub),6);
+two_stim_df_right=zeros(length(sub),6);
 two_stim_df_left_final=zeros(length(sub),15);
 two_stim_df_right_final=zeros(length(sub),15);
 
-one_stim_df_left=zeros(length(sub),4);
-one_stim_df_right=zeros(length(sub),4);
+one_stim_df_left=zeros(length(sub),6);
+one_stim_df_right=zeros(length(sub),6);
 one_stim_df_left_final=zeros(length(sub),15);
 one_stim_df_right_final=zeros(length(sub),15);
 
@@ -37,6 +37,9 @@ graph_df_left=zeros(2,70);
 
 graph_data_df_right=zeros(length(sub),6);
 graph_df_right=zeros(2,70);
+
+h1_data_left=zeros(length(sub),14);
+h1_data_right=zeros(length(sub),14);
 
 % Specify CB regions
 cb = {'IV', 'V', 'VI', 'Crus_I', 'Crus_II', 'VIIb', 'VIIIa', 'VIIIb', ...
@@ -53,6 +56,7 @@ for c = 1:length(cb)
 
         % Assign sub ID
         two_stim_df_left(s,1) = str2double(sub{s});
+        two_stim_df_left(s,6) = c;
         graph_data_df_left(s,1) = str2double(sub{s});
         
         % Check for doors
@@ -219,6 +223,11 @@ for c = 1:length(cb)
         graph_df_left(2,c+2) = 3;
         graph_df_left(2,c+3) = 4;
         graph_df_left(2,c+4) = 5;
+        h1_data_left(:,c) = graph_data_df_left(:,2);
+        h1_data_left(:,c+1) = graph_data_df_left(:,3);
+        h1_data_left(:,c+2) = graph_data_df_left(:,4);
+        h1_data_left(:,c+3) = graph_data_df_left(:,5);
+        h1_data_left(:,c+4) = graph_data_df_left(:,6);
     else
         graph_df_left(1,((c-1)*5+1)) = nanmean(graph_data_df_left(:,2));
         graph_df_left(1,((c-1)*5)+2) = nanmean(graph_data_df_left(:,3));
@@ -230,9 +239,18 @@ for c = 1:length(cb)
         graph_df_left(2,((c-1)*5)+3) = 3;
         graph_df_left(2,((c-1)*5)+4) = 4;
         graph_df_left(2,((c-1)*5)+5) = 5;
+        h1_data_left(:,(c-1)*5+1) = graph_data_df_left(:,2);
+        h1_data_left(:,(c-1)*5+2) = graph_data_df_left(:,3);
+        h1_data_left(:,(c-1)*5+3) = graph_data_df_left(:,4);
+        h1_data_left(:,(c-1)*5+4) = graph_data_df_left(:,5);
+        h1_data_left(:,(c-1)*5+5) = graph_data_df_left(:,6);
     end
+    h1_data_left(isnan(h1_data_left))=0;
     fclose all
 end
+
+h1_filename_left = 'h1_data_left.xlsx';
+writematrix(h1_data_left,h1_filename_left,'Sheet',1,'Range','A1');
 
 figure
 x = 1:14;
@@ -251,6 +269,22 @@ ylim([-.5 .2]);
 leg = {'Doors','Socialdoors','UGDG','MID','SharedReward'};
 legend(leg,'Location','southwest');
 
+% UPDATE NEEDED HERE: Add error bars
+% hold on
+% 
+% e1=[(std(data_mat.Doors_Win_RT_t1)/sqrt(length(data_mat.Doors_Win_RT_t1))) (std(data_mat.Doors_Loss_RT_t1)/sqrt(length(data_mat.Doors_Loss_RT_t1))) ; (std(data_mat.Social_Win_RT_t1)/sqrt(length(data_mat.Social_Win_RT_t1))) (std(data_mat.Social_Loss_RT_t1)/sqrt(length(data_mat.Social_Loss_RT_t1))) ];
+% ngroups = size(bar_data, 1);
+% nbars = size(bar_data, 2);
+% 
+% % Calculating the width for each bar group
+% groupwidth = min(0.8, nbars/(nbars + 1.5));
+% for i = 1:nbars
+%     x = (1:ngroups) - groupwidth/2 + (2*i-1) * groupwidth / (2*nbars);
+%     errorbar(x, bar_data(:,i), e1(:,i), 'ko');
+% end
+
+hold off
+
 
 %% Read in data for two stim df right
 for c = 1:length(cb)
@@ -258,6 +292,7 @@ for c = 1:length(cb)
 
         % Assign sub ID
         two_stim_df_right(s,1) = str2double(sub{s});
+        two_stim_df_right(s,6) = c;
         
         % Check for doors
         f_doors = fullfile([datadir 'doors/sub-' sub{s} '_task-doors_right_cb-' cb{c} '.txt']);
@@ -422,6 +457,11 @@ for c = 1:length(cb)
         graph_df_right(2,c+2) = 3;
         graph_df_right(2,c+3) = 4;
         graph_df_right(2,c+4) = 5;
+        h1_data_right(:,c) = graph_data_df_right(:,2);
+        h1_data_right(:,c+1) = graph_data_df_right(:,3);
+        h1_data_right(:,c+2) = graph_data_df_right(:,4);
+        h1_data_right(:,c+3) = graph_data_df_right(:,5);
+        h1_data_right(:,c+4) = graph_data_df_right(:,6);
     else
         graph_df_right(1,((c-1)*5+1)) = nanmean(graph_data_df_right(:,2));
         graph_df_right(1,((c-1)*5)+2) = nanmean(graph_data_df_right(:,3));
@@ -433,9 +473,18 @@ for c = 1:length(cb)
         graph_df_right(2,((c-1)*5)+3) = 3;
         graph_df_right(2,((c-1)*5)+4) = 4;
         graph_df_right(2,((c-1)*5)+5) = 5;
+        h1_data_right(:,(c-1)*5+1) = graph_data_df_right(:,2);
+        h1_data_right(:,(c-1)*5+2) = graph_data_df_right(:,3);
+        h1_data_right(:,(c-1)*5+3) = graph_data_df_right(:,4);
+        h1_data_right(:,(c-1)*5+4) = graph_data_df_right(:,5);
+        h1_data_right(:,(c-1)*5+5) = graph_data_df_right(:,6);
     end
+    h1_data_right(isnan(h1_data_right))=0;
     fclose all
 end
+
+h1_filename_right = 'h1_data_right.xlsx';
+writematrix(h1_data_left,h1_filename_right,'Sheet',1,'Range','A1');
 
 figure
 x = 1:14;
