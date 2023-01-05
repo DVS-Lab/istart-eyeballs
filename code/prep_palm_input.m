@@ -484,7 +484,7 @@ for c = 1:length(cb)
 end
 
 h1_filename_right = 'h1-1_data_right_test.xlsx';
-writematrix(h1_data_left,h1_filename_right,'Sheet',1,'Range','A1');
+writematrix(h1_data_right,h1_filename_right,'Sheet',1,'Range','A1');
 
 figure
 x = 1:14;
