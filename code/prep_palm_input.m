@@ -245,11 +245,11 @@ for c = 1:length(cb)
         h1_data_left(:,(c-1)*5+4) = graph_data_df_left(:,5);
         h1_data_left(:,(c-1)*5+5) = graph_data_df_left(:,6);
     end
-    h1_data_left(isnan(h1_data_left))=0;
+    h1_data_left(isnan(h1_data_left))=1;
     fclose all
 end
 
-h1_filename_left = 'h1_data_left.xlsx';
+h1_filename_left = 'h1-1_data_left_test.xlsx';
 writematrix(h1_data_left,h1_filename_left,'Sheet',1,'Range','A1');
 
 figure
@@ -479,11 +479,11 @@ for c = 1:length(cb)
         h1_data_right(:,(c-1)*5+4) = graph_data_df_right(:,5);
         h1_data_right(:,(c-1)*5+5) = graph_data_df_right(:,6);
     end
-    h1_data_right(isnan(h1_data_right))=0;
+    h1_data_right(isnan(h1_data_right))=1;
     fclose all
 end
 
-h1_filename_right = 'h1_data_right.xlsx';
+h1_filename_right = 'h1-1_data_right_test.xlsx';
 writematrix(h1_data_left,h1_filename_right,'Sheet',1,'Range','A1');
 
 figure
