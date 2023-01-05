@@ -479,11 +479,11 @@ for c = 1:length(cb)
         h1_data_right(:,(c-1)*5+4) = graph_data_df_right(:,5);
         h1_data_right(:,(c-1)*5+5) = graph_data_df_right(:,6);
     end
-    h1_data_right(isnan(h1_data_right))=1;
+    h1_data_right(isnan(h1_data_right))=0;
     fclose all
 end
 
-h1_filename_right = 'h1-1_data_right_test.xlsx';
+h1_filename_right = 'h1-1_data_right.xlsx';
 writematrix(h1_data_right,h1_filename_right,'Sheet',1,'Range','A1');
 
 figure
