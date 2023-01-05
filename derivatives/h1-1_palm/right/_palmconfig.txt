@@ -1,8 +1,8 @@
 # Configuration file for PALM.
 # Version alpha119, running in MATLAB 9.12.0.2039608 (R2022a) Update 5.
-# 05-Jan-2023 14:49:42
+# 05-Jan-2023 14:56:36
 
--i ../../../code/h1-1_data_right_test.csv
+-i ../../../code/h1-1_data_right.csv
 -d ../../../code/h1-1_test_design.mat
 -t ../../../code/h1-1_test_design.con
 -o /data/projects/istart-eyeballs/derivatives/h1-1_palm/right/
