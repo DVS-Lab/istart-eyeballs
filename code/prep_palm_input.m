@@ -45,7 +45,7 @@ h1_data_right=zeros(length(sub),14);
 cb = {'IV', 'V', 'VI', 'Crus_I', 'Crus_II', 'VIIb', 'VIIIa', 'VIIIb', ...
     'IX', 'X', 'Vermis_VI', 'Vermis_VIIIa', 'Vermis_VIIIb', 'Vermis_IX'};
 
-%cb = {'Crus_I', 'Crus_II'};
+%cb = {'Vermis_IX'};
 
 format = '%c';
 
@@ -386,7 +386,7 @@ final_df_right = final_df_right(:,2:15);
 filename = 'extraction_data_two-one_right.xlsx';
 writematrix(final_df_right,filename,'Sheet',1,'Range','A1');
 
-%% Right: Write graph data
+%% Right: Write graph data (all 5 tasks in each ROI)
 
 for c = 1:length(cb)
 
@@ -502,6 +502,86 @@ xline([1.5 2.5 3.5 4.5 5.5 6.5 7.5 8.5 9.5 10.5 11.5 12.5 13.5]);
 ylim([-.5 .2]);
 leg = {'Doors','Socialdoors','UGDG','MID','SharedReward'};
 legend(leg,'Location','southwest');
+
+%% Right: Write graph data (two-stim vs one-stim for each ROI)
+
+filename = 'OHBM_Fig2_data.xlsx';
+OHBM_Fig2_data = readmatrix(filename);
+
+figure
+x = 1:14;
+y = [OHBM_Fig2_data(1,1:2); OHBM_Fig2_data(1,3:4); OHBM_Fig2_data(1,5:6); OHBM_Fig2_data(1,7:8); OHBM_Fig2_data(1,9:10); OHBM_Fig2_data(1,11:12); ...
+    OHBM_Fig2_data(1,13:14); OHBM_Fig2_data(1,15:16); OHBM_Fig2_data(1,17:18); OHBM_Fig2_data(1,19:20); OHBM_Fig2_data(1,21:22); OHBM_Fig2_data(1,23:24); ...
+    OHBM_Fig2_data(1,25:26); OHBM_Fig2_data(1,27:28)];
+b = bar(y,'grouped');
+title('Right Hemisphere: Eye/CB Connectivity by Task');
+xticks(1:14);
+xticklabels({'IV', 'V', 'VI', 'Crus I', 'Crus II', 'VIIb', 'VIIIa', 'VIIIb', ...
+    'IX', 'X', 'Vermis VI', 'Vermis VIIIa', 'Vermis VIIIb', 'Vermis IX'});
+ylabel('zstat');
+xlabel('CB Subregion');
+xline([1.5 2.5 3.5 4.5 5.5 6.5 7.5 8.5 9.5 10.5 11.5 12.5 13.5]);
+ylim([-.3 .1]);
+leg = {'Two-stim','One-stim'};
+legend(leg,'Location','southwest');
+
+e1 = [OHBM_Fig2_data(2,1:2); OHBM_Fig2_data(2,3:4); OHBM_Fig2_data(2,5:6); OHBM_Fig2_data(2,7:8); OHBM_Fig2_data(2,9:10); OHBM_Fig2_data(2,11:12); ...
+    OHBM_Fig2_data(2,13:14); OHBM_Fig2_data(2,15:16); OHBM_Fig2_data(2,17:18); OHBM_Fig2_data(2,19:20); OHBM_Fig2_data(2,21:22); OHBM_Fig2_data(2,23:24); ...
+    OHBM_Fig2_data(2,25:26); OHBM_Fig2_data(2,27:28)];
+e2 = e1*-1;
+
+hold on
+[ngroups,nbars] = size(y);
+
+x = nan(nbars, ngroups);
+for i = 1:nbars
+    x(i,:) = b(i).XEndPoints;
+end
+
+errorbar(x',y,e1,'k','linestyle','none');
+hold off
+
+% UPDATE NEEDED HERE: Add error bars
+hold on
+ngroups = size(y, 1);
+nbars = size(y, 2);
+% Calculating the width for each bar group
+groupwidth = min(0.8, nbars/(nbars + 1.5));
+for i = 1:nbars
+    x = (1:ngroups) - groupwidth/2 + (2*i-1) * groupwidth / (2*nbars);
+    errorbar(x, y(:,i), err(:,i), '.');
+end
+hold off
+
+%% Right: Write graph data (two-stim > one-stim for each ROI)
+
+filename = 'OHBM_Fig2_data_two-one_palm.xlsx';
+OHBM_Fig2_data = readmatrix(filename);
+
+figure
+x = 1:14;
+y = [OHBM_Fig2_data(1,1:14)];
+b = bar(y);
+title('Right Hemisphere: Eye/CB Connectivity by Task');
+xticks(1:14);
+xticklabels({'IV', 'V', 'VI', 'Crus I', 'Crus II', 'VIIb', 'VIIIa', 'VIIIb', ...
+    'IX', 'X', 'Vermis VI', 'Vermis VIIIa', 'Vermis VIIIb', 'Vermis IX'});
+ylabel('zstat, two stim > one stim');
+xlabel('CB Subregion');
+%xline([1.5 2.5 3.5 4.5 5.5 6.5 7.5 8.5 9.5 10.5 11.5 12.5 13.5]);
+ylim([-.225 .075]);
+
+e1 = [OHBM_Fig2_data(2,1:14)];
+e2 = e1*-1;
+
+hold on
+
+er = errorbar(x,y,e1,e2);
+er.Color = [0 0 0];
+er.LineStyle = 'none';
+
+hold off
+
 
 %% Write covariate info
 
