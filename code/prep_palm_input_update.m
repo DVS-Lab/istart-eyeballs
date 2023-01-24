@@ -3,23 +3,24 @@ close all;
 fclose all;
 clc
 
-% Script to combine extracted CB values for PALM -i input dataframes
+% Script to combine extracted CB values for PALM -i input dataframes & to
+% generate plots
 % Jimmy Wyngaarden, 19 Dec 22
 
 %% Set up dirs
 %codedir = '/data/projects/istart-eyeballs/code/'; % Run code from this path.
-codedir = '~/Documents/Github/istart-eyeballs/code/';
-addpath(codedir)
-%datadir = '/data/projects/istart-eyeballs/derivatives/extractions/';
-datadir = '~/Documents/Github/istart-eyeballs/derivatives/extractions/';
-addpath(datadir)
+codedir = pwd;
+cd ..
+basedir=pwd;
+datadir = fullfile(basedir, 'derivatives','extractions');
+cd(codedir)
 
+% Specify subs
 sub = {'1001', '1003', '1004', '1006', '1009', '1010', '1011', '1012', '1013', '1015', '1016', '1019', ...
     '1021', '1242', '1243', '1244', '1245', '1247', '1248', '1249', '1251', '1253', '1255', '1276', '1282', ...
     '1286', '1294', '1300', '1301', '1302', '1303', '3116', '3122', '3125', '3140', '3143', '3152', ...
     '3166', '3167', '3170', '3173', '3176', '3189', '3190', '3199', '3200', '3206', '3210', '3212', '3218', ...
     '3220', '3223'};
-% 3101
 
 % Preallocate dataframes
 df=zeros(length(sub),6);
@@ -49,7 +50,7 @@ for h = 1:length(hemi)
             % Extract connectivity values for each sub in each task
             task = {'doors', 'socialdoors', 'ugdg', 'mid', 'sharedreward'};
             for t=1:length(task)
-                f = fullfile([datadir, task{t}, '/sub-' sub{s} '_task-' task{t} '_' hemi{h} '_cb-' cb{c} '.txt']);
+                f = fullfile(datadir, task{t}, ['sub-' sub{s} '_task-' task{t} '_' hemi{h} '_cb-' cb{c} '.txt']);
                 if isfile(f)
                     file = fopen(f);
                     value = fscanf(file,format);
