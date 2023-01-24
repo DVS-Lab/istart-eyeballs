@@ -8,7 +8,7 @@ clc
 % Jimmy Wyngaarden, 19 Dec 22
 
 %% Set up dirs
-%codedir = '/data/projects/istart-eyeballs/code/'; % Run code from this path.
+% Script needs to be run from the istart-eyeballs/code directory
 codedir = pwd;
 cd ..
 basedir=pwd;
