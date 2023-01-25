@@ -7,14 +7,13 @@
 scriptdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 basedir="$(dirname "$scriptdir")"
 
-for task in doors mid sharedreward socialdoors ugdg; do #mid sharedreward ugdg; do
+for task in doors mid sharedreward socialdoors ugdg; do
 	echo ${task}	
 	for cb in `cat ${basedir}/code/CB_ROIs.txt`; do 
 		echo ${cb}		
-		for sub in `cat ${basedir}/code/gsr_data_${task}.csv`; do
-		#for sub in 3101; do			
+		for sub in `cat ${basedir}/code/gsr_data_${task}.csv`; do		
 				
-			# Read in sub ID, gsr, & usable run (1=1, 2=2, 3=both)				
+			# Read in sub ID & usable run (1=1, 2=2, 3=both)				
 			IFS=',' read run gsr tsnr fd_mean sub <<< $sub
 			echo ${sub} ${run}
 				
