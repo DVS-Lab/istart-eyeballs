@@ -50,7 +50,7 @@ for h = 1:length(hemi)
             % Extract connectivity values for each sub in each task
             task = {'doors', 'socialdoors', 'ugdg', 'mid', 'sharedreward'};
             for t=1:length(task)
-                f = fullfile(datadir, task{t}, ['sub-' sub{s} '_task-' task{t} '_' hemi{h} '_cb-' cb{c} '.txt']);
+                f = fullfile(datadir, task{t}, ['sub-' sub{s} '_task-' task{t} '_eye-' hemi{h} '_hemi-' hemi{h} '_cb-' cb{c} '.txt']); % update this filename with new extractions
                 if isfile(f)
                     file = fopen(f);
                     value = fscanf(file,format);
