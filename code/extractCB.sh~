@@ -55,7 +55,7 @@ for task in doors socialdoors; do #mid sharedreward ugdg; do
 					if [ -e $L1physLeft ]; then					
 						if	[ "${cb}" == "IV" ] || [ "${cb}" == "V" ]; then
 							echo "Extracting Left ${cb} from ${sub} ${task} run-${run}"							
-							fslmeants -i ${L1physLeft} -o ${outputdir}/sub-${sub}_task-${task}_eye-left_hemi-left_cb-${cb}.txt -m ${basedir}/masks/Cerebellum_archive/cerebellum_Left_${cb}.nii.gz
+							fslmeants -i ${L1physLeft} -o ${outputdir}/sub-${sub}_task-${task}_left_cb-${cb}.txt -m ${basedir}/masks/Cerebellum_archive/cerebellum_Left_${cb}.nii.gz
 							echo "Extracting Right ${cb} from ${sub} ${task} run-${run}"							
 							fslmeants -i ${L1physRight} -o ${outputdir}/sub-${sub}_task-${task}_right_cb-${cb}.txt -m ${basedir}/masks/Cerebellum_archive/cerebellum_Right_${cb}.nii.gz
 						else				
