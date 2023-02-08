@@ -13,6 +13,7 @@ codedir = pwd;
 cd ..
 basedir=pwd;
 datadir = fullfile(basedir, 'derivatives','extractions');
+%datadir = fullfile(basedir, 'derivatives','extractions_archive');
 cd(codedir)
 
 % Specify subs
@@ -51,6 +52,7 @@ for h = 1:length(hemi)
             task = {'doors', 'socialdoors', 'ugdg', 'mid', 'sharedreward'};
             for t=1:length(task)
                 f = fullfile(datadir, task{t}, ['sub-' sub{s} '_task-' task{t} '_eye-' hemi{h} '_hemi-' hemi{h} '_cb-' cb{c} '.txt']); % update this filename with new extractions
+                %f = fullfile(datadir, task{t}, ['sub-' sub{s} '_task-' task{t} '_' hemi{h} '_cb-' cb{c} '.txt']);
                 if isfile(f)
                     file = fopen(f);
                     value = fscanf(file,format);
