@@ -7,16 +7,11 @@
 scriptdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 basedir="$(dirname "$scriptdir")"
 
-# Loop
-#for task in mid; do
-for task in doors socialdoors; do #mid sharedreward ugdg; do
+for task in doors socialdoors mid sharedreward ugdg; do #mid sharedreward ugdg; do
 	echo ${task}	
 	for cb in `cat ${basedir}/code/CB_ROIs.txt`; do 
-	#for cb in "Crus_II"; do
 		echo ${cb}		
-	
-			for sub in `cat ${basedir}/code/gsr_data_${task}.csv`; do
-			#for sub in 3101; do			
+			for sub in `cat ${basedir}/code/gsr_data_${task}.csv`; do		
 				
 				# Read in sub ID, gsr, & usable run (1=1, 2=2, 3=both)				
 				IFS=',' read run gsr tsnr fd_mean sub <<< $sub
@@ -37,16 +32,18 @@ for task in doors socialdoors; do #mid sharedreward ugdg; do
 				L1physLeft=${basedir}/derivatives/fsl/sub-${sub}/L1_task-${task}_model-1_type-ppi_seed-eyeball_left_run-${run}_sm-5.feat/stats/zstat${cnum}.nii.gz	
 				L1physRight=${basedir}/derivatives/fsl/sub-${sub}/L1_task-${task}_model-1_type-ppi_seed-eyeball_right_run-${run}_sm-5.feat/stats/zstat${cnum}.nii.gz			
 				
+				# Define phys copes for left and right when both runs are useable (run = 3)
 				L2physLeft=${basedir}/derivatives/fsl/sub-${sub}/L2_task-${task}_model-1_type-ppi_seed-eyeball_left_sm-5.gfeat/cope${cnum}.feat/stats/zstat1.nii.gz				
 				L2physRight=${basedir}/derivatives/fsl/sub-${sub}/L2_task-${task}_model-1_type-ppi_seed-eyeball_right_sm-5.gfeat/cope${cnum}.feat/stats/zstat1.nii.gz				
 				
+				# Smoothing kernel is flagged as 6 (despite being set to 5!) for doors & socialdoors, so they get specified here
 				if [ "${task}" == "doors" ] || [ "${task}" == "socialdoors" ]; then
 				 	L1physLeft=${basedir}/derivatives/fsl/sub-${sub}/L1_task-${task}_model-1_type-ppi_seed-eyeball_left_run-${run}_sm-6.feat/stats/zstat${cnum}.nii.gz	
 					L1physRight=${basedir}/derivatives/fsl/sub-${sub}/L1_task-${task}_model-1_type-ppi_seed-eyeball_right_run-${run}_sm-6.feat/stats/zstat${cnum}.nii.gz
 				fi								
 				
 				# Define output directory
-				outputdir=${basedir}/derivatives/extractions/${task}
+				outputdir=${basedir}/derivatives/extractionsCB/${task}
 				
 				# Do extraction		
 				if [ $run -eq 1 ]	|| [ $run -eq 2 ]; then			
@@ -55,7 +52,7 @@ for task in doors socialdoors; do #mid sharedreward ugdg; do
 					if [ -e $L1physLeft ]; then					
 						if	[ "${cb}" == "IV" ] || [ "${cb}" == "V" ]; then
 							echo "Extracting Left ${cb} from ${sub} ${task} run-${run}"							
-							fslmeants -i ${L1physLeft} -o ${outputdir}/sub-${sub}_task-${task}_eye-left_hemi-left_cb-${cb}.txt -m ${basedir}/masks/Cerebellum_archive/cerebellum_Left_${cb}.nii.gz
+							fslmeants -i ${L1physLeft} -o ${outputdir}/sub-${sub}_task-${task}_left_cb-${cb}.txt -m ${basedir}/masks/Cerebellum_archive/cerebellum_Left_${cb}.nii.gz
 							echo "Extracting Right ${cb} from ${sub} ${task} run-${run}"							
 							fslmeants -i ${L1physRight} -o ${outputdir}/sub-${sub}_task-${task}_right_cb-${cb}.txt -m ${basedir}/masks/Cerebellum_archive/cerebellum_Right_${cb}.nii.gz
 						else				
