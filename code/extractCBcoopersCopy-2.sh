@@ -43,7 +43,7 @@ for task in doors mid sharedreward socialdoors ugdg; do
 			fi								
 				
 			# Define output directory
-			outputdir=${basedir}/derivatives/extractions/${task}
+			outputdir=${basedir}/derivatives/extractions_16Feb23/${task}
 				
 			# Do extraction: First, determine whether usable data comes from run-1, run-2, or both (run = 3)		
 			if [ $run -eq 1 ]	|| [ $run -eq 2 ]; then			
@@ -52,14 +52,19 @@ for task in doors mid sharedreward socialdoors ugdg; do
 				if [ -e $L1physRight ]; then	
 									
 					# Extract ipsilateral and contralateral eye-cb ppi signal						
-					echo "Extracting right eye from left ${cb} for ${sub} ${task} run-${run}"							
-					fslmeants -i ${L1physRight} -o ${outputdir}/sub-${sub}_task-${task}_eye-right_hemi-left_cb-${cb}.txt -m ${basedir}/masks/Cerebellum_archive/cerebellum_Left_${cb}.nii.gz
+					#echo "Extracting right eye from left ${cb} for ${sub} ${task} run-${run}"							
+					#fslmeants -i ${L1physRight} -o ${outputdir}/sub-${sub}_task-${task}_eye-right_hemi-left_cb-${cb}.txt -m ${basedir}/masks/Cerebellum_archive/cerebellum_Left_${cb}.nii.gz
+					
 					echo "Extracting left eye from left ${cb} for ${sub} ${task} run-${run}"							
 					fslmeants -i ${L1physLeft} -o ${outputdir}/sub-${sub}_task-${task}_eye-left_hemi-left_cb-${cb}.txt -m ${basedir}/masks/Cerebellum_archive/cerebellum_Left_${cb}.nii.gz
+					fslmeants -i ${L1physLeft} -o ${outputdir}/sub-${sub}_task-${task}_left_cb-${cb}.txt -m ${basedir}/masks/Cerebellum_archive/cerebellum_Left_${cb}.nii.gz
+
 					echo "Extracting right eye from right ${cb} for ${sub} ${task} run-${run}"							
 					fslmeants -i ${L1physRight} -o ${outputdir}/sub-${sub}_task-${task}_eye-right_hemi-right_cb-${cb}.txt -m ${basedir}/masks/Cerebellum_archive/cerebellum_Right_${cb}.nii.gz
-					echo "Extracting left eye from right ${cb} for ${sub} ${task} run-${run}"							
-					fslmeants -i ${L1physLeft} -o ${outputdir}/sub-${sub}_task-${task}_eye-left_hemi-right_cb-${cb}.txt -m ${basedir}/masks/Cerebellum_archive/cerebellum_Right_${cb}.nii.gz				
+					fslmeants -i ${L1physRight} -o ${outputdir}/sub-${sub}_task-${task}_right_cb-${cb}.txt -m ${basedir}/masks/Cerebellum_archive/cerebellum_Right_${cb}.nii.gz
+
+					#echo "Extracting left eye from right ${cb} for ${sub} ${task} run-${run}"							
+					#fslmeants -i ${L1physLeft} -o ${outputdir}/sub-${sub}_task-${task}_eye-left_hemi-right_cb-${cb}.txt -m ${basedir}/masks/Cerebellum_archive/cerebellum_Right_${cb}.nii.gz				
 					
 				# If phys file can't be found, print error message					
 				else
@@ -69,14 +74,19 @@ for task in doors mid sharedreward socialdoors ugdg; do
 			# Repeat extractions for subs that have usable data from both runs
 			elif [ $run -eq 3 ]; then		
 				if [ -e $L2physRight ]; then										
-					echo "Extracting Left ${cb} from ${sub} ${task} from L2stats"							
-					fslmeants -i ${L2physRight} -o ${outputdir}/sub-${sub}_task-${task}_eye-right_hemi-left_cb-${cb}.txt -m ${basedir}/masks/Cerebellum_archive/cerebellum_Left_${cb}.nii.gz
-					echo "Extracting Right ${cb} from ${sub} ${task} from L2stats"
-					fslmeants -i ${L2physLeft} -o ${outputdir}/sub-${sub}_task-${task}_eye-left_hemi-right_cb-${cb}.txt -m ${basedir}/masks/Cerebellum_archive/cerebellum_Right_${cb}.nii.gz
+					#echo "Extracting Left ${cb} from ${sub} ${task} from L2stats"							
+					#fslmeants -i ${L2physRight} -o ${outputdir}/sub-${sub}_task-${task}_eye-right_hemi-left_cb-${cb}.txt -m ${basedir}/masks/Cerebellum_archive/cerebellum_Left_${cb}.nii.gz
+
+					#echo "Extracting Right ${cb} from ${sub} ${task} from L2stats"
+					#fslmeants -i ${L2physLeft} -o ${outputdir}/sub-${sub}_task-${task}_eye-left_hemi-right_cb-${cb}.txt -m ${basedir}/masks/Cerebellum_archive/cerebellum_Right_${cb}.nii.gz
+
 					echo "Extracting Left ${cb} from ${sub} ${task} from L2stats"							
 					fslmeants -i ${L2physLeft} -o ${outputdir}/sub-${sub}_task-${task}_eye-left_hemi-left_cb-${cb}.txt -m ${basedir}/masks/Cerebellum_archive/cerebellum_Left_${cb}.nii.gz
+					fslmeants -i ${L2physLeft} -o ${outputdir}/sub-${sub}_task-${task}_left_cb-${cb}.txt -m ${basedir}/masks/Cerebellum_archive/cerebellum_Left_${cb}.nii.gz
+
 					echo "Extracting Right ${cb} from ${sub} ${task} from L2stats"
 					fslmeants -i ${L2physRight} -o ${outputdir}/sub-${sub}_task-${task}_eye-right_hemi-right_cb-${cb}.txt -m ${basedir}/masks/Cerebellum_archive/cerebellum_Right_${cb}.nii.gz
+					fslmeants -i ${L2physRight} -o ${outputdir}/sub-${sub}_task-${task}_right_cb-${cb}.txt -m ${basedir}/masks/Cerebellum_archive/cerebellum_Right_${cb}.nii.gz				
 				else
 					echo "Cannot find L2stats file ${L2physRight}"
 				fi			
