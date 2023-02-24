@@ -1,0 +1,77 @@
+#!/bin/bash
+
+# Set the path to the directory containing your functional data
+scriptdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+basedir="$(dirname "$scriptdir")"
+
+# Set the tasks you want to extract data for
+task=("ugdg" "mid" "sharedreward")
+hemi=("left" "right")
+eye=("left" "right")
+
+# Loop through each combination of task, CB subregion, and sub
+for task in ${task[@]};
+do
+	echo ${task}
+	for cb in `cat ${basedir}/code/CB_ROIs.txt`;
+	do
+		echo ${cb}
+		for sub in `cat ${basedir}/code/gsr_data_${task}.csv`;
+		do
+			# Read usable run info
+			IFS=',' read run gsr tsnr fd_mean sub <<< $sub
+			echo ${sub} ${run}
+			
+			# Specify proper cope num for each task
+			if [ "${task}" == "doors" ] || [ "${task}" == "socialdoors" ];
+			then
+				cnum=5
+			elif [ "${task}" == "mid" ];
+			then
+				cnum=15
+			elif [ "${task}" == "ugdg" ];
+			then
+				cnum=17
+			elif [ "${task}" == "sharedreward" ];
+			then
+				cnum=24
+			fi
+
+			# Define phys copes based on task & run
+			if [ "${task}" == "mid" ] || [ "${task}" == "ugdg" ] || [ "${task}" == "sharedreward" ];
+			then			
+				if [ $run -eq 1 ] || [ $run -eq 2 ];
+				then
+					left_phys=${basedir}/derivatives/fsl/sub-${sub}/L1-task-${task}_model-1_type-ppi_seed-eyeball_left_run-${run}_sm-5.feat/stats/zstat${cnum}.nii.gz
+					right_phys=${basedir}/derivatives/fsl/sub-${sub}/L1-task-${task}_model-1_type-ppi_seed-eyeball_right_run-${run}_sm-5.feat/stats/zstat${cnum}.nii.gz
+				elif [ $run -eq 3 ];
+				then
+					left_phys=${basedir}/derivatives/fsl/sub-${sub}/L2_task-${task}_model-1_type-ppi_seed-eyeball_left_sm-5.gfeat/cope${cnum}.feat/stats/zstat1.nii.gz
+					right_phys=${basedir}/derivatives/fsl/sub-${sub}/L2_task-${task}_model-1_type-ppi_seed-eyeball_right_sm-5.gfeat/cope${cnum}.feat/stats/zstat1.nii.gz
+				else
+					echo "run does not equal 1, 2, or 3"				
+				fi
+			elif [ "${task}" == "doors" ] || [ "${task}" == "socialdoors" ];
+			then
+				left_phys=${basedir}/derivatives/fsl/sub-${sub}/L1_task-${task}_model-1_type-ppi_seed-eyeball_left_run-${run}_sm-6.feat/stats/zstat${cnum}.nii.gz
+				right_phys=${basedir}/derivatives/fsl/sub-${sub}/L1_task-${task}_model-1_type-ppi_seed-eyeball_right_run-${run}_sm-6.feat/stats/zstat${cnum}.nii.gz
+			else
+				echo "task does not equal doors, socialdoors, mid, ugdg, or sharedreward"
+			fi
+			
+			# Define output directory and create it if it doesn't already exist
+			outputdir=${basedir}/derivatives/fsl/extractions_16Feb23/${task}
+			#if [ ! -f $outputdir ];
+			#then
+			#	mkdir $outputdir
+			#fi
+			
+			# Do the extractions: ipsi left, ipsi right, contra left, contra right
+			fslmeants -i ${left_phys} -o ${outputdir}/sub-${sub}_task-${task}_eye-left_hemi-left_cb-${cb}.txt -m ${basedir}/masks/Cerebellum_archive/cerebellum_Left_${cb}.nii.gz				
+			fslmeants -i ${right_phys} -o ${outputdir}/sub-${sub}_task-${task}_eye-right_hemi-right_cb-${cb}.txt -m ${basedir}/masks/Cerebellum_archive/cerebellum_Right_${cb}.nii.gz
+			fslmeants -i ${left_phys} -o ${outputdir}/sub-${sub}_task-${task}_eye-left_hemi-right_cb-${cb}.txt -m ${basedir}/masks/Cerebellum_archive/cerebellum_Right_${cb}.nii.gz				
+			fslmeants -i ${right_phys} -o ${outputdir}/sub-${sub}_task-${task}_eye-right_hemi-left_cb-${cb}.txt -m ${basedir}/masks/Cerebellum_archive/cerebellum_Left_${cb}.nii.gz
+			echo "Extractions complete for sub-${sub}_task-${task}_cb-${cb}"
+		done
+	done
+done
