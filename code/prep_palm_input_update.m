@@ -12,8 +12,8 @@ clc
 codedir = pwd;
 cd ..
 basedir=pwd;
-datadir = fullfile(basedir, 'derivatives','extractions');
-%datadir = fullfile(basedir, 'derivatives','extractions_archive');
+%datadir = fullfile(basedir, 'derivatives','extractions');
+datadir = fullfile(basedir, 'derivatives','extractions_17Feb23');
 cd(codedir)
 
 % Specify subs
@@ -26,9 +26,17 @@ sub = {'1001', '1003', '1004', '1006', '1009', '1010', '1011', '1012', '1013', '
 % Preallocate dataframes
 df=zeros(length(sub),6);
 df_full=zeros(length(sub),70);
+df_contra=df;
+df_contra_full=df_full;
+
+df_leftEye_leftHemi=df_full;
+df_rightEye_rightHemi=df_full;
+df_leftEye_rightHemi=df_contra_full;
+df_rightEye_leftHemi=df_contra_full;
 
 % Specify hemisphere
 hemi = {'left', 'right'};
+%hemi = {'left'};
 
 % Specify CB regions
 cb = {'IV', 'V', 'VI', 'Crus_I', 'Crus_II', 'VIIb', 'VIIIa', 'VIIIb', ...
@@ -48,8 +56,9 @@ for h = 1:length(hemi)
             % Assign sub ID
             df(s,1) = str2double(sub{s});
 
-            % Extract connectivity values for each sub in each task
             task = {'doors', 'socialdoors', 'ugdg', 'mid', 'sharedreward'};
+            
+            % Extract ipsilateral connectivity values for each sub in each task
             for t=1:length(task)
                 f = fullfile(datadir, task{t}, ['sub-' sub{s} '_task-' task{t} '_eye-' hemi{h} '_hemi-' hemi{h} '_cb-' cb{c} '.txt']); % update this filename with new extractions
                 %f = fullfile(datadir, task{t}, ['sub-' sub{s} '_task-' task{t} '_' hemi{h} '_cb-' cb{c} '.txt']);
@@ -86,6 +95,52 @@ for h = 1:length(hemi)
                     end
                 end
             end
+            fclose all;
+            
+            % Add contralateral data
+            for t=1:length(task)
+                if hemi{h} == "left"
+                    f = fullfile(datadir, task{t}, ['sub-' sub{s} '_task-' task{t} '_eye-left_hemi-right_cb-' cb{c} '.txt']);
+                elseif hemi{h} == "right"
+                    f = fullfile(datadir, task{t}, ['sub-' sub{s} '_task-' task{t} '_eye-right_hemi-left_cb-' cb{c} '.txt']);
+                else
+                    disp("Task var not recognized; enter a proper task");
+                end
+
+                if isfile(f)
+                    file = fopen(f);
+                    value = fscanf(file,format);
+                    if strcmp(task{t},'doors') 
+                        df_contra(s,2) = str2double(value);
+                    elseif strcmp(task{t},'socialdoors')
+                        df_contra(s,3) = str2double(value);
+                    elseif strcmp(task{t},'ugdg')
+                        df_contra(s,4) = str2double(value);
+                    elseif strcmp(task{t},'mid')
+                        df_contra(s,5) = str2double(value);
+                    elseif strcmp(task{t},'sharedreward')
+                        df_contra(s,6) = str2double(value);
+                    else
+                        disp("Task var not recognized; enter a proper task");
+                    end
+                else
+                    disp("No data for "+f);
+                    if strcmp(task{t},'doors')
+                        df_contra(s,2) = NaN;
+                    elseif strcmp(task{t},'socialdoors')
+                        df_contra(s,3) = NaN;
+                    elseif strcmp(task{t},'ugdg')
+                        df_contra(s,4) = NaN;
+                    elseif strcmp(task{t},'mid')
+                        df_contra(s,5) = NaN;
+                    elseif strcmp(task{t},'sharedreward')
+                        df_contra(s,6) = NaN;
+                    else
+                        disp("Task var not recognized; enter a proper task");
+                    end
+                end
+                fclose all;
+            end
         end
 
         % Convert df to table and add column labels
@@ -93,7 +148,7 @@ for h = 1:length(hemi)
         df_table.Properties.VariableNames(1:6) = {'Sub', 'doors', 'socialdoors', ...
             'ugdg', 'mid', 'sharedreward'};
         
-        % Write master df (df_full) with all tasks & regions
+        % Write master df (df_full) with all tasks & regions for ipsi data
         if c < 2
             df_full(:,c) = df(:,2);
             df_full(:,c+1) = df(:,3);
@@ -106,6 +161,22 @@ for h = 1:length(hemi)
             df_full(:,(c-1)*5+3) = df(:,4);
             df_full(:,(c-1)*5+4) = df(:,5);
             df_full(:,(c-1)*5+5) = df(:,6);
+        end
+
+        % Write master df (df_contra_full) with all tasks & regions for
+        % contra data
+        if c < 2
+            df_contra_full(:,c) = df_contra(:,2);
+            df_contra_full(:,c+1) = df_contra(:,3);
+            df_contra_full(:,c+2) = df_contra(:,4);
+            df_contra_full(:,c+3) = df_contra(:,5);
+            df_contra_full(:,c+4) = df_contra(:,6);
+        else
+            df_contra_full(:,(c-1)*5+1) = df_contra(:,2);
+            df_contra_full(:,(c-1)*5+2) = df_contra(:,3);
+            df_contra_full(:,(c-1)*5+3) = df_contra(:,4);
+            df_contra_full(:,(c-1)*5+4) = df_contra(:,5);
+            df_contra_full(:,(c-1)*5+5) = df_contra(:,6);
         end
     end
     
@@ -128,6 +199,19 @@ for h = 1:length(hemi)
         'Vermis-VIIIb-doors', 'Vermis-VIIIb-socialdoors', 'Vermis-VIIIb-ugdg', 'Vermis-VIIIb-mid', 'Vermis-VIIIb-sharedreward', ...
         'Vermis-IX-doors', 'Vermis-IX-socialdoors', 'Vermis-IX-ugdg', 'Vermis-IX-mid', 'Vermis-IX-sharedreward'};
 
+    % Add subs to df_full_table
+    df_full_table.Subs = df(:,1);
+    df_full_table = [df_full_table(:,71) df_full_table(:,1:70)];
+
+    % Convert contralateral df to table and write column labels
+    df_contra_full(df_contra_full == 0) = NaN;
+    df_contra_full_table = array2table(df_contra_full);
+    df_contra_full_table.Properties.VariableNames(1:70) = df_full_table.Properties.VariableNames(2:71);
+
+    % Add subs to df_contra_full_table
+    df_contra_full_table.Subs = df(:,1);
+    df_contra_full_table = [df_contra_full_table(:,71) df_contra_full_table(:,1:70)];
+
     % Write data to .xlsx file
     if strcmp(hemi{h},'left')
         filename = 'df_full_left.xlsx';
@@ -138,7 +222,7 @@ for h = 1:length(hemi)
     else
     
     % STOP: at this point you should have a var called 'df_full_table' that
-    % contains the ipsilateral signal from eye to corresponding cb
+    % contains the ipsilateral signal from eye to corresponding cb 
     % region. There should be 52 rows (one per sub), and 70 columns (5
     % tasks per 14 cb regions). You can manually confirm that these values
     % are correct by comparing these values to the corresponding .txt files
@@ -408,8 +492,260 @@ for h = 1:length(hemi)
     errorbar(x',y,e1,'k','linestyle','none','HandleVisibility','off');
     hold off
 
-% Reallocate dataframes
-df=zeros(length(sub),6);
-df_full=zeros(length(sub),70);
+    % Save contralateral data
+    if hemi{h} == "left"
+        df_leftEye_leftHemi = df_full(1:52,:);
+        df_leftEye_leftHemi_table = df_full_table;
+        df_leftEye_rightHemi = df_contra_full;
+        df_leftEye_rightHemi_table = df_contra_full_table;
+    else
+        df_rightEye_rightHemi = df_full(1:52,:);
+        df_rightEye_rightHemi_table = df_full_table;
+        df_rightEye_leftHemi = df_contra_full;
+        df_rightEye_leftHemi_table = df_contra_full_table;
+    end
+
+    % Reallocate dataframes
+    df=zeros(length(sub),6);
+    df_full=zeros(length(sub),70);
 
 end %hemi
+
+%% Make df for H1.2, Ipsi>Contra
+% Now we're going to average across tasks within cb subregions (i.e., one
+% row per sub, one column per cb
+df_ipsi_left_avg=zeros(length(sub),14);
+df_contra_left_avg=zeros(length(sub),14);
+df_ipsi_right_avg=zeros(length(sub),14);
+df_contra_right_avg=zeros(length(sub),14);
+
+% Calculate mean across tasks within cb subregions and write to h1_data
+for s=1:length(sub)    
+    for j=1:length(df_ipsi_left_avg(1,:))
+        if j<2
+            df_ipsi_left_avg(s,j)=mean(df_leftEye_leftHemi(s,j:j+4),"omitnan");
+            df_contra_left_avg(s,j)=mean(df_rightEye_leftHemi(s,j:j+4),"omitnan");
+            df_ipsi_right_avg(s,j)=mean(df_rightEye_rightHemi(s,j:j+4),"omitnan");
+            df_contra_right_avg(s,j)=mean(df_leftEye_rightHemi(s,j:j+4),"omitnan");
+        else
+            df_ipsi_left_avg(s,j)=mean(df_leftEye_leftHemi(s,((j-1)*5)+1:((j-1)*5)+5),"omitnan");
+            df_contra_left_avg(s,j)=mean(df_rightEye_leftHemi(s,((j-1)*5)+1:((j-1)*5)+5),"omitnan");
+            df_ipsi_right_avg(s,j)=mean(df_rightEye_rightHemi(s,((j-1)*5)+1:((j-1)*5)+5),"omitnan");
+            df_contra_right_avg(s,j)=mean(df_leftEye_rightHemi(s,((j-1)*5)+1:((j-1)*5)+5),"omitnan");
+        end
+    end
+end
+
+% Calculate L (ipsi > contra) > R (ipsi > contra)
+h1_2data_long=(df_leftEye_leftHemi-df_rightEye_leftHemi)-(df_rightEye_rightHemi-df_leftEye_rightHemi);
+h1_2data=zeros(length(sub),14);
+for s=1:length(sub)    
+    for j=1:length(h1_2data(1,:))
+        if j<2
+            h1_2data(s,j)=mean(h1_2data_long(s,j:j+4),"omitnan");
+        else
+            h1_2data(s,j)=mean(h1_2data_long(s,((j-1)*5)+1:((j-1)*5)+5),"omitnan");
+        end
+    end
+end
+
+%% Plot h1.2_data
+% Plot: y-axis = signal, x-axis = one bar for each task/subregion
+
+% Calculate avg & std error
+for k=1:length(df_ipsi_left_avg(1,:))
+    h1_2data(53,k)=mean(h1_2data(1:52,k),"omitnan");
+    h1_2data(54,k)=(std(h1_2data(1:52,k),"omitnan"))/sqrt(52);
+end
+    
+% Add error bars (standard error)
+e1 = [h1_2data(54,:)];
+e2 = e1*-1;
+
+figure
+    
+% Specify data
+x = 1:14;
+y = [h1_2data(53,:)];
+bar(x,y);
+
+title('Avg Left (Ipsi > Contra) > Right (Ipsi > Contra)');
+
+xticks(1:14);
+xticklabels({'IV', 'V', 'VI', 'Crus I', 'Crus II', 'VIIb', 'VIIIa', 'VIIIb', ...
+    'IX', 'X', 'Vermis VI', 'Vermis VIIIa', 'Vermis VIIIb', 'Vermis IX'});
+ylabel('L(Ipsi > Contra) > R(Ipsi > Contra) (zstat)');
+xlabel('CB Subregion');
+%xline([1.5 2.5 3.5 4.5 5.5 6.5 7.5 8.5 9.5 10.5 11.5 12.5 13.5]);
+ylim([-.2 .1]);
+
+hold on
+er = errorbar(x,y,e1,e2);
+er.Color = [0 0 0];
+er.LineStyle = 'none';
+
+hold off
+
+
+%% Plot components to H1.2 (separated)
+% Plot: y-axis = signal, x-axis = one bar for each task/subregion
+
+% Left Ipsilateral 5-task Avg
+for k=1:length(df_ipsi_left_avg(1,:))
+    df_ipsi_left_avg(53,k)=mean(df_ipsi_left_avg(1:52,k),"omitnan");
+    df_ipsi_left_avg(54,k)=(std(df_ipsi_left_avg(1:52,k),"omitnan"))/sqrt(52);
+end
+    
+% Add error bars (standard error)
+e1 = [df_ipsi_left_avg(54,:)];
+e2 = e1*-1;
+
+figure
+    
+% Specify data
+x = 1:14;
+y = [df_ipsi_left_avg(53,:)];
+bar(x,y);
+
+title('Avg Left Ipsilateral Eye/CB Connectivity by CB');
+
+xticks(1:14);
+xticklabels({'IV', 'V', 'VI', 'Crus I', 'Crus II', 'VIIb', 'VIIIa', 'VIIIb', ...
+    'IX', 'X', 'Vermis VI', 'Vermis VIIIa', 'Vermis VIIIb', 'Vermis IX'});
+ylabel('5-Task Avg (zstat)');
+xlabel('CB Subregion');
+%xline([1.5 2.5 3.5 4.5 5.5 6.5 7.5 8.5 9.5 10.5 11.5 12.5 13.5]);
+ylim([-.2 .1]);
+
+hold on
+er = errorbar(x,y,e1,e2);
+er.Color = [0 0 0];
+er.LineStyle = 'none';
+
+hold off
+
+% Left Contralateral 5-task Avg
+for k=1:length(df_contra_left_avg(1,:))
+    df_contra_left_avg(53,k)=mean(df_contra_left_avg(1:52,k),"omitnan");
+    df_contra_left_avg(54,k)=(std(df_contra_left_avg(1:52,k),"omitnan"))/sqrt(52);
+end
+    
+% Add error bars (standard error)
+e1 = [df_contra_left_avg(54,:)];
+e2 = e1*-1;
+
+figure
+    
+% Specify data
+x = 1:14;
+y = [df_contra_left_avg(53,:)];
+bar(x,y);
+
+title('Avg Left Contralateral Eye/CB Connectivity by CB');
+
+xticks(1:14);
+xticklabels({'IV', 'V', 'VI', 'Crus I', 'Crus II', 'VIIb', 'VIIIa', 'VIIIb', ...
+    'IX', 'X', 'Vermis VI', 'Vermis VIIIa', 'Vermis VIIIb', 'Vermis IX'});
+ylabel('5-Task Avg (zstat)');
+xlabel('CB Subregion');
+%xline([1.5 2.5 3.5 4.5 5.5 6.5 7.5 8.5 9.5 10.5 11.5 12.5 13.5]);
+ylim([-.2 .1]);
+
+hold on
+er = errorbar(x,y,e1,e2);
+er.Color = [0 0 0];
+er.LineStyle = 'none';
+
+hold off
+
+% Right Ipsilateral 5-task Avg
+for k=1:length(df_ipsi_right_avg(1,:))
+    df_ipsi_right_avg(53,k)=mean(df_ipsi_right_avg(1:52,k),"omitnan");
+    df_ipsi_right_avg(54,k)=(std(df_ipsi_right_avg(1:52,k),"omitnan"))/sqrt(52);
+end
+    
+% Add error bars (standard error)
+e1 = [df_ipsi_right_avg(54,:)];
+e2 = e1*-1;
+
+figure
+    
+% Specify data
+x = 1:14;
+y = [df_ipsi_right_avg(53,:)];
+bar(x,y);
+
+title('Avg Right Ipsilateral Eye/CB Connectivity by CB');
+
+xticks(1:14);
+xticklabels({'IV', 'V', 'VI', 'Crus I', 'Crus II', 'VIIb', 'VIIIa', 'VIIIb', ...
+    'IX', 'X', 'Vermis VI', 'Vermis VIIIa', 'Vermis VIIIb', 'Vermis IX'});
+ylabel('5-Task Avg (zstat)');
+xlabel('CB Subregion');
+%xline([1.5 2.5 3.5 4.5 5.5 6.5 7.5 8.5 9.5 10.5 11.5 12.5 13.5]);
+ylim([-.2 .1]);
+
+hold on
+er = errorbar(x,y,e1,e2);
+er.Color = [0 0 0];
+er.LineStyle = 'none';
+
+hold off
+
+% Right Contralateral 5-task Avg
+for k=1:length(df_contra_right_avg(1,:))
+    df_contra_right_avg(53,k)=mean(df_contra_right_avg(1:52,k),"omitnan");
+    df_contra_right_avg(54,k)=(std(df_contra_right_avg(1:52,k),"omitnan"))/sqrt(52);
+end
+    
+% Add error bars (standard error)
+e1 = [df_contra_right_avg(54,:)];
+e2 = e1*-1;
+
+figure
+    
+% Specify data
+x = 1:14;
+y = [df_contra_right_avg(53,:)];
+bar(x,y);
+
+title('Avg Right Contralateral Eye/CB Connectivity by CB');
+
+xticks(1:14);
+xticklabels({'IV', 'V', 'VI', 'Crus I', 'Crus II', 'VIIb', 'VIIIa', 'VIIIb', ...
+    'IX', 'X', 'Vermis VI', 'Vermis VIIIa', 'Vermis VIIIb', 'Vermis IX'});
+ylabel('5-Task Avg (zstat)');
+xlabel('CB Subregion');
+%xline([1.5 2.5 3.5 4.5 5.5 6.5 7.5 8.5 9.5 10.5 11.5 12.5 13.5]);
+ylim([-.2 .1]);
+
+hold on
+er = errorbar(x,y,e1,e2);
+er.Color = [0 0 0];
+er.LineStyle = 'none';
+
+hold off
+
+% % Subtract signal from contralateral eye from signal from ipsilateral eye
+% % in each hemisphere:
+% h1_2_data_left = df_leftEye_leftHemi - df_rightEye_leftHemi;
+% h1_2_data_right = df_rightEye_rightHemi - df_leftEye_rightHemi;
+% 
+% % Preallocate df
+% h1_2_avg_left=zeros(length(sub),14);
+% h1_2_avg_right=zeros(length(sub),14);
+% 
+% % Calculate mean across tasks within cb subregions and write to h1_data
+% for s=1:length(sub)    
+%     for j=1:length(h1_2_avg_left(1,:))
+%         if j<2
+%             h1_2_avg_left(s,j)=mean(h1_2_data_left(s,j:j+4),"omitnan");
+%             h1_2_avg_right(s,j)=mean(h1_2_data_right(s,j:j+4),"omitnan");
+%         else
+%             h1_2_avg_left(s,j)=mean(h1_2_data_left(s,((j-1)*5)+1:((j-1)*5)+5),"omitnan");
+%             h1_2_avg_right(s,j)=mean(h1_2_data_right(s,((j-1)*5)+1:((j-1)*5)+5),"omitnan");
+%         end
+%     end
+% end
+
+
