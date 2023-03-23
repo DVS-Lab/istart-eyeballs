@@ -20,7 +20,7 @@ sub=$1
 run=$2
 ppi=$3 # 0 for activation, otherwise seed region or network
 TASK=$4
-
+echo ${sub} ${TASK} ${run} 
 # set inputs and general outputs (should not need to change across studies in Smith Lab)
 MAINOUTPUT=${maindir}/derivatives/fsl/sub-${sub}
 mkdir -p $MAINOUTPUT
@@ -32,10 +32,14 @@ if [ ! -e $CONFOUNDEVS ]; then
 	exit # exiting to ensure nothing gets run without confounds
 fi
 
-if [ "$TASK" == "mid" ]; then
-	EVDIR=/data/projects/istart-mid/derivatives/fsl/EVfiles/sub-${sub}/${TASK}/run-0${run} #change to maindir TO FIX: no zero pad
-elif [ "$TASK" == "ugdg" ]; then
-	EVDIR=/data/projects/istart-ugdg/derivatives/fsl/EVfiles/sub-${sub}/${TASK}/run-0${run}
+# specify zero-padding or not or EVfiles
+if [ "$TASK" == "mid" -o "$TASK" == "ugdg" ]; then
+	EVDIR=${maindir}/derivatives/fsl/EVfiles/sub-${sub}/${TASK}/run-0${run}
+elif [ "$TASK" == "doors" -o "$TASK" == "socialdoors" -o "$TASK" == "sharedreward" ]; then
+	EVDIR=${maindir}/derivatives/fsl/EVfiles/sub-${sub}/${TASK}/run-${run}
+else
+	echo "Task entered incorrectly; enter a proper ISTART taskname"
+	exit
 fi
 
 # empty EVs (specific to this study)
@@ -139,7 +143,7 @@ else # otherwise, do activation and seed-based ppi
 		else
 			PHYS=${MAINOUTPUT}/ts_task-${TASK}_mask-${ppi}_run-${run}.txt
 			MASK=${maindir}/masks/seed-${ppi}.nii.gz
-			fslmeants -i $DATA -o $PHYS -m $MASK --eig
+			fslmeants -i $DATA -o $PHYS -m $MASK
 			sed -e 's@OUTPUT@'$OUTPUT'@g' \
 			-e 's@DATA@'$DATA'@g' \
 			-e 's@EVDIR@'$EVDIR'@g' \
@@ -150,6 +154,8 @@ else # otherwise, do activation and seed-based ppi
 			-e 's@CONFOUNDEVS@'$CONFOUNDEVS'@g' \
 			-e 's@NVOLUMES@'$NVOLUMES'@g' \
 			<$ITEMPLATE> $OTEMPLATE
+			
+			
 		fi
 		feat $OTEMPLATE
 	fi

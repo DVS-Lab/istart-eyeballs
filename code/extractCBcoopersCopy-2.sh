@@ -43,7 +43,7 @@ for task in doors mid sharedreward socialdoors ugdg; do
 			fi								
 				
 			# Define output directory
-			outputdir=${basedir}/derivatives/extractions_17Feb23/${task}
+			outputdir=${basedir}/derivatives/extractions_eig/${task}
 				
 			# Do extraction: First, determine whether usable data comes from run-1, run-2, or both (run = 3)		
 			if [ $run -eq 1 ]	|| [ $run -eq 2 ]; then			

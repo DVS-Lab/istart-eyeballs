@@ -52,7 +52,7 @@ for task in doors mid sharedreward socialdoors ugdg; do
 				if [ -e $L1physRight ]; then	
 									
 					echo "Extracting left eye from left ${cb} for ${sub} ${task} run-${run}"							
-					fslmeants -i ${L1physLeft} -o ${outputdir}/sub-${sub}_task-${task}_eye-left_hemi-left_cb-${cb}.txt -m ${basedir}/masks/Cerebellum_archive/cerebellum_Left_${cb}.nii.gz
+					fslmeants -i ${L1physLeft} -o ${outputdir}/sub-${sub}_task-${task}_eye-left_hemi-left_cb-${cb}.txt -m ${basedir}/masks/Cerebellum_archive/cerebellum_Left_${cb}.nii.gz\
 					#fslmeants -i ${L1physLeft} -o ${outputdir}/sub-${sub}_task-${task}_left_cb-${cb}.txt -m ${basedir}/masks/Cerebellum_archive/cerebellum_Left_${cb}.nii.gz
 
 					echo "Extracting right eye from right ${cb} for ${sub} ${task} run-${run}"							
