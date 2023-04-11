@@ -329,7 +329,7 @@ set feat_files(2) "INPUT2"
 set fmri(confoundevs) 0
 
 # EV 1 title
-set fmri(evtitle1) "main"
+set fmri(evtitle1) ""
 
 # Basic waveform shape (EV 1)
 # 0 : Square
