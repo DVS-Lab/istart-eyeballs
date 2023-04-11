@@ -8,6 +8,7 @@ maindir="$(dirname "$scriptdir")"
 sub=$1
 type=$2
 task=$3
+eig=$4
 sm=5 # edit if necessary
 MAINOUTPUT=${maindir}/derivatives/fsl/sub-${sub}
 model=1
@@ -32,8 +33,13 @@ NCOPES=5
 ITEMPLATE=${maindir}/templates/L2_task-${task}_model-${model}_type-ppi.fsf
 let NCOPES=${NCOPES}+1 # add 1 since we tend to only have one extra contrast for PPI
 
-INPUT1=${MAINOUTPUT}/L1_task-${task}_model-${model}_type-${type}_run-1_sm-${sm}.feat
-INPUT2=${MAINOUTPUT}/L1_task-${task}_model-${model}_type-${type}_run-2_sm-${sm}.feat
+if [ ${eig} -eq 0 ];then
+	INPUT1=${MAINOUTPUT}/L1_task-${task}_model-${model}_type-${type}_run-1_sm-${sm}.feat
+	INPUT2=${MAINOUTPUT}/L1_task-${task}_model-${model}_type-${type}_run-2_sm-${sm}.feat
+else
+	INPUT1=${MAINOUTPUT}/L1_task-${task}_model-${model}_type-${type}_run-1_sm-${sm}_eig.feat
+	INPUT2=${MAINOUTPUT}/L1_task-${task}_model-${model}_type-${type}_run-2_sm-${sm}_eig.feat
+fi
 
 # --- end EDIT HERE end: exceptions and conditionals for the task; need to exclude bad/missing runs
 
