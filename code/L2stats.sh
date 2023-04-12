@@ -33,7 +33,7 @@ NCOPES=5
 ITEMPLATE=${maindir}/templates/L2_task-${task}_model-${model}_type-ppi.fsf
 let NCOPES=${NCOPES}+1 # add 1 since we tend to only have one extra contrast for PPI
 
-if [ ${eig} -eq 0 ];then
+if [ ${eig} -eq 0 ]; then
 	INPUT1=${MAINOUTPUT}/L1_task-${task}_model-${model}_type-${type}_run-1_sm-${sm}.feat
 	INPUT2=${MAINOUTPUT}/L1_task-${task}_model-${model}_type-${type}_run-2_sm-${sm}.feat
 else
@@ -45,7 +45,12 @@ fi
 
 
 # check for existing output and re-do if missing/incomplete
-OUTPUT=${MAINOUTPUT}/L2_task-${task}_model-${model}_type-${type}_sm-${sm}
+if [ ${eig} -eq 0 ]; then
+	OUTPUT=${MAINOUTPUT}/L2_task-${task}_model-${model}_type-${type}_sm-${sm}
+else
+	OUTPUT=${MAINOUTPUT}/L2_task-${task}_model-${model}_type-${type}_sm-${sm}_eig
+fi
+
 if [ -e ${OUTPUT}.gfeat/cope${NCOPES}.feat/cluster_mask_zstat1.nii.gz ]; then # check last (act) or penultimate (ppi) cope
 	echo "skipping existing output"
 else
