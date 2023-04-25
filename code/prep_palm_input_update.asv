@@ -6,16 +6,18 @@ clc
 % Script to combine extracted CB values for PALM -i input dataframes & to
 % generate plots
 % Jimmy Wyngaarden, 19 Dec 22
+% Updated 25 Apr 23
 
 %% Set up dirs
 % Script needs to be run from the istart-eyeballs/code directory
 codedir = pwd;
 cd ..
 basedir=pwd;
-%datadir = fullfile(basedir, 'derivatives','extractions');
-%datadir = fullfile(basedir, 'derivatives','extractions_17Feb23');
 datadir = fullfile(basedir, 'derivatives','imaging_plots');
 cd(codedir)
+% Locations from past iterations:
+%datadir = fullfile(basedir, 'derivatives','extractions');
+%datadir = fullfile(basedir, 'derivatives','extractions_17Feb23');
 
 % Specify subs
 sub = {'1001', '1003', '1004', '1006', '1009', '1010', '1011', '1012', '1013', '1015', '1016', '1019', ...
@@ -29,29 +31,28 @@ df=zeros(length(sub),6);
 df_full=zeros(length(sub),70);
 df_contra=df;
 df_contra_full=df_full;
-
 df_leftEye_leftHemi=df_full;
 df_rightEye_rightHemi=df_full;
 df_leftEye_rightHemi=df_contra_full;
 df_rightEye_leftHemi=df_contra_full;
 
-% Specify hemisphere
-%hemi = {'left', 'right'};
+% Specify hemisphere (need to have both L & R for all plots to work right
+% now)
 hemi = {'left', 'right'};
 
 % Specify CB regions
 cb = {'IV', 'V', 'VI', 'Crus_I', 'Crus_II', 'VIIb', 'VIIIa', 'VIIIb', ...
     'IX', 'X', 'Vermis_VI', 'Vermis_VIIIa', 'Vermis_VIIIb', 'Vermis_IX'};
 
+% Specify eig (0=non-eig, 1=eig)
+eig = '1'; 
+
 format = '%c';
 
-% Specify eig (0=non-eig, 1=eig)
-eig = '0'; 
-
 %% Read in raw data
-% First, we're going to create a dataframe that has one row for each sub
-% and one column for ipsilateral eye-cb connectivity for each task in each
-% subregion
+% First, we're going to create dataframes that has one row for each sub
+% and one column for both ipsilateral and contralateral 
+% eye-cb connectivity for each task in each cb subregion
 
 for h = 1:length(hemi)
     for c = 1:length(cb)
@@ -746,8 +747,11 @@ x = 1:14;
 y = [df_ipsi_right_avg(53,:)];
 bar(x,y);
 
-title('Avg Right Ipsilateral Eye/CB Connectivity by CB');
-
+if strcmp(eig,'0')
+    title('Avg Right Ipsilateral Eye/CB Connectivity by CB');
+elseif strcmp(eig,'1')
+    title('Avg Right Ipsilateral Eye/CB Connectivity by CB (Eig)');
+end
 
 xticks(1:14);
 xticklabels({'IV', 'V', 'VI', 'Crus I', 'Crus II', 'VIIb', 'VIIIa', 'VIIIb', ...
@@ -781,7 +785,11 @@ x = 1:14;
 y = [df_contra_right_avg(53,:)];
 bar(x,y);
 
-title('Avg Right Contralateral Eye/CB Connectivity by CB');
+if strcmp(eig,'0')
+    title('Avg Right Contralateral Eye/CB Connectivity by CB');
+elseif strcmp(eig,'1')
+    title('Avg Right Contralateral Eye/CB Connectivity by CB (Eig)');
+end
 
 xticks(1:14);
 xticklabels({'IV', 'V', 'VI', 'Crus I', 'Crus II', 'VIIb', 'VIIIa', 'VIIIb', ...
