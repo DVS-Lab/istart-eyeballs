@@ -35,8 +35,8 @@ df_rightEye_rightHemi=df_full;
 df_leftEye_rightHemi=df_contra_full;
 df_rightEye_leftHemi=df_contra_full;
 
-% Specify hemisphere (need to have both L & R for all plots to work right
-% now)
+% Specify hemisphere
+%hemi = {'left', 'right'};
 hemi = {'left', 'right'};
 
 % Specify CB regions
@@ -46,7 +46,7 @@ cb = {'IV', 'V', 'VI', 'Crus_I', 'Crus_II', 'VIIb', 'VIIIa', 'VIIIb', ...
 format = '%c';
 
 % Specify eig (0=non-eig, 1=eig)
-eig = '1'; 
+eig = '0'; 
 
 %% Read in raw data
 % First, we're going to create a dataframe that has one row for each sub
@@ -746,11 +746,8 @@ x = 1:14;
 y = [df_ipsi_right_avg(53,:)];
 bar(x,y);
 
-if strcmp(eig,'0')
-    title('Avg Right Ipsilateral Eye/CB Connectivity by CB');
-elseif strcmp(eig,'1')
-    title('Avg Right Ipsilateral Eye/CB Connectivity by CB (Eig)');
-end
+title('Avg Right Ipsilateral Eye/CB Connectivity by CB');
+
 
 xticks(1:14);
 xticklabels({'IV', 'V', 'VI', 'Crus I', 'Crus II', 'VIIb', 'VIIIa', 'VIIIb', ...
@@ -784,11 +781,7 @@ x = 1:14;
 y = [df_contra_right_avg(53,:)];
 bar(x,y);
 
-if strcmp(eig,'0')
-    title('Avg Right Contralateral Eye/CB Connectivity by CB');
-elseif strcmp(eig,'1')
-    title('Avg Right Contralateral Eye/CB Connectivity by CB (Eig)');
-end
+title('Avg Right Contralateral Eye/CB Connectivity by CB');
 
 xticks(1:14);
 xticklabels({'IV', 'V', 'VI', 'Crus I', 'Crus II', 'VIIb', 'VIIIa', 'VIIIb', ...
