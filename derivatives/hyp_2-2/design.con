@@ -1,15 +1,15 @@
 /ContrastName1	pos 
 /ContrastName2	neg 
-/ContrastName3	fd_mean-pos 
-/ContrastName4	fd)mean-neg 
-/ContrastName5	tsnr-pos 
-/ContrastName6	tsnr-neg 
+/ContrastName3	tsnr-pos 
+/ContrastName4	tsnr-neg 
+/ContrastName5	fd_mean-pos 
+/ContrastName6	fd_mean-neg 
 /ContrastName7	GSR-pos 
 /ContrastName8	GSR-neg 
 /NumWaves	4
 /NumContrasts	8
-/PPheights		1.000000e+00	1.000000e+00	3.567134e+00	3.567134e+00	3.999697e+00	3.999697e+00	8.862093e+00	8.862093e+00
-/RequiredEffect		0.569	0.569	2.673	2.673	2.992	2.992	1.941	1.941
+/PPheights		1.000000e+00	1.000000e+00	3.529765e-02	3.529765e-02	4.557922e+01	4.557922e+01	8.882384e-01	8.882384e-01
+/RequiredEffect		0.569	0.569	4.410	4.410	2.677	2.677	4.680	4.680
 
 /Matrix
 1.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00 

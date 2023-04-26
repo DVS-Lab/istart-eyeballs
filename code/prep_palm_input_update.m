@@ -641,7 +641,7 @@ xticklabels({'IV', 'V', 'VI', 'Crus I', 'Crus II', 'VIIb', 'VIIIa', 'VIIIb', ...
 ylabel('L(Ipsi > Contra) > R(Ipsi > Contra) (zstat)');
 xlabel('CB Subregion');
 %xline([1.5 2.5 3.5 4.5 5.5 6.5 7.5 8.5 9.5 10.5 11.5 12.5 13.5]);
-ylim([-.2 .1]);
+ylim([-.15 .25]);
 
 hold on
 er = errorbar(x,y,e1,e2);
