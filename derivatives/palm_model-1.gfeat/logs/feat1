@@ -1,0 +1,8 @@
+
+/bin/cp /tmp/feat_qtz2ax.fsf design.fsf
+
+/usr/share/fsl/6.0.4/bin/feat_model design
+
+mkdir .files;cp /usr/share/fsl/6.0.4/doc/fsl.css .files;cp -r /usr/share/fsl/6.0.4/doc/images .files/images
+
+/usr/share/fsl/6.0.4/bin/fsl_sub -T 60 -l logs -N feat2_pre   /usr/share/fsl/6.0.4/bin/feat /data/projects/istart-eyeballs/derivatives/palm_model-1.gfeat/design.fsf -D /data/projects/istart-eyeballs/derivatives/palm_model-1.gfeat -gfeatprep

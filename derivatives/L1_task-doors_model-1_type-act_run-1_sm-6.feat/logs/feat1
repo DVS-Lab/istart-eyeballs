@@ -1,0 +1,21 @@
+
+/bin/cp /data/projects/istart-socdoors/derivatives/fsl/sub-1001/L1_sub-1001_task-doors_model-1_type-act_run-1.fsf design.fsf
+
+/usr/share/fsl/6.0.4/bin/feat_model design
+
+mkdir .files;cp /usr/share/fsl/6.0.4/doc/fsl.css .files;cp -r /usr/share/fsl/6.0.4/doc/images .files/images
+
+/usr/share/fsl/6.0.4/bin/fsl_sub -T 10 -l logs -N feat0_init   /usr/share/fsl/6.0.4/bin/feat /data/projects/istart-socdoors/derivatives/fsl/sub-1001/L1_task-doors_model-1_type-act_run-1_sm-6.feat/design.fsf -D /data/projects/istart-socdoors/derivatives/fsl/sub-1001/L1_task-doors_model-1_type-act_run-1_sm-6.feat -I 1 -init
+39023
+
+/usr/share/fsl/6.0.4/bin/fsl_sub -T 97 -l logs -N feat2_pre -j 39023  /usr/share/fsl/6.0.4/bin/feat /data/projects/istart-socdoors/derivatives/fsl/sub-1001/L1_task-doors_model-1_type-act_run-1_sm-6.feat/design.fsf -D /data/projects/istart-socdoors/derivatives/fsl/sub-1001/L1_task-doors_model-1_type-act_run-1_sm-6.feat -I 1 -prestats
+42038
+
+/usr/share/fsl/6.0.4/bin/fsl_sub -T 69 -l logs -N feat3_film -j 42038  /usr/share/fsl/6.0.4/bin/feat /data/projects/istart-socdoors/derivatives/fsl/sub-1001/L1_task-doors_model-1_type-act_run-1_sm-6.feat/design.fsf -D /data/projects/istart-socdoors/derivatives/fsl/sub-1001/L1_task-doors_model-1_type-act_run-1_sm-6.feat -I 1 -stats
+48362
+
+/usr/share/fsl/6.0.4/bin/fsl_sub -T 119 -l logs -N feat4_post -j 48362  /usr/share/fsl/6.0.4/bin/feat /data/projects/istart-socdoors/derivatives/fsl/sub-1001/L1_task-doors_model-1_type-act_run-1_sm-6.feat/design.fsf -D /data/projects/istart-socdoors/derivatives/fsl/sub-1001/L1_task-doors_model-1_type-act_run-1_sm-6.feat -poststats 0 
+9052
+
+/usr/share/fsl/6.0.4/bin/fsl_sub -T 1 -l logs -N feat5_stop -j 42038,48362,9052  /usr/share/fsl/6.0.4/bin/feat /data/projects/istart-socdoors/derivatives/fsl/sub-1001/L1_task-doors_model-1_type-act_run-1_sm-6.feat/design.fsf -D /data/projects/istart-socdoors/derivatives/fsl/sub-1001/L1_task-doors_model-1_type-act_run-1_sm-6.feat -stop
+11459
