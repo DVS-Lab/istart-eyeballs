@@ -1,0 +1,10 @@
+couldn't change working directory to "/data/projects/istart-eyeballs/derivatives/palm_model-1.gfeat/cope1.feat/stats": no such file or directory
+    while executing
+"if { [ catch {
+
+for { set argindex 1 } { $argindex < $argc } { incr argindex 1 } {
+    switch -- [ lindex $argv $argindex ] {
+
+	-I {
+	    incr arginde..."
+    (file "/usr/share/fsl/6.0.4/bin/feat" line 312)

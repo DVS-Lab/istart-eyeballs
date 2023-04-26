@@ -1,0 +1,102 @@
+
+/bin/cp /tmp/feat_qtz2ax.fsf design.fsf
+
+/usr/share/fsl/6.0.4/bin/feat_model design
+
+mkdir .files;cp /usr/share/fsl/6.0.4/doc/fsl.css .files;cp -r /usr/share/fsl/6.0.4/doc/images .files/images
+
+/usr/share/fsl/6.0.4/bin/fsl_sub -T 60 -l logs -N feat2_pre   /usr/share/fsl/6.0.4/bin/feat /data/projects/istart-eyeballs/derivatives/palm_model-1.gfeat/design.fsf -D /data/projects/istart-eyeballs/derivatives/palm_model-1.gfeat -gfeatprep
+177558
+
+/usr/share/fsl/6.0.4/bin/fsl_sub -T 60 -l logs -N feat3a_flame -j 177558  /usr/share/fsl/6.0.4/bin/feat /data/projects/istart-eyeballs/derivatives/palm_model-1.gfeat/cope1.feat/design.fsf -D /data/projects/istart-eyeballs/derivatives/palm_model-1.gfeat/cope1.feat -I 1 -flame1
+410416
+
+/usr/share/fsl/6.0.4/bin/fsl_sub -T 60 -l logs -N feat3b_flame -j 410416 -t ./.flame
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+/usr/share/fsl/6.0.4/bin/fsl_sub: line 531: cannot create temp file for here-document: No space left on device
+413838
+
+/usr/share/fsl/6.0.4/bin/fsl_sub -T 60 -l logs -N feat3c_flame -j 413838  /usr/share/fsl/6.0.4/bin/feat /data/projects/istart-eyeballs/derivatives/palm_model-1.gfeat/cope1.feat/design.fsf -D /data/projects/istart-eyeballs/derivatives/palm_model-1.gfeat/cope1.feat -flame3
+414046
+
+/usr/share/fsl/6.0.4/bin/fsl_sub -T 60 -l logs -N feat4_post -j 414046  /usr/share/fsl/6.0.4/bin/feat /data/projects/istart-eyeballs/derivatives/palm_model-1.gfeat/cope1.feat/design.fsf -D /data/projects/istart-eyeballs/derivatives/palm_model-1.gfeat/cope1.feat -poststats 1
+couldn't change working directory to "/data/projects/istart-eyeballs/derivatives/palm_model-1.gfeat/cope1.feat/stats": no such file or directory
+    while executing
+"if { [ catch {
+
+for { set argindex 1 } { $argindex < $argc } { incr argindex 1 } {
+    switch -- [ lindex $argv $argindex ] {
+
+	-I {
+	    incr arginde..."
+    (file "/usr/share/fsl/6.0.4/bin/feat" line 312)
+
+FATAL ERROR ENCOUNTERED:
+COMMAND:
+/usr/share/fsl/6.0.4/bin/fsl_sub -T 60 -l logs -N feat4_post -j 414046  /usr/share/fsl/6.0.4/bin/feat /data/projects/istart-eyeballs/derivatives/palm_model-1.gfeat/cope1.feat/design.fsf -D /data/projects/istart-eyeballs/derivatives/palm_model-1.gfeat/cope1.feat -poststats 1
+ERROR MESSAGE:
+child process exited abnormally
+END OF ERROR MESSAGE
