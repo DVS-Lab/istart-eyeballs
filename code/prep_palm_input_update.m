@@ -45,7 +45,7 @@ cb = {'IV', 'V', 'VI', 'Crus_I', 'Crus_II', 'VIIb', 'VIIIa', 'VIIIb', ...
     'IX', 'X', 'Vermis_VI', 'Vermis_VIIIa', 'Vermis_VIIIb', 'Vermis_IX'};
 
 % Specify eig (0=non-eig, 1=eig)
-eig = '1'; 
+eig = '0'; 
 
 format = '%c';
 
@@ -385,7 +385,7 @@ for h = 1:length(hemi)
     ylabel('5-Task Avg (zstat)');
     xlabel('CB Subregion');
     %xline([1.5 2.5 3.5 4.5 5.5 6.5 7.5 8.5 9.5 10.5 11.5 12.5 13.5]);
-    ylim([-.2 .1]);
+    ylim([-.25 .15]);
 
     hold on
     er = errorbar(x,y,e1,e2);
