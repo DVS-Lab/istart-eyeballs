@@ -50,9 +50,9 @@ eig = '1';
 format = '%c';
 
 %% Read in raw data
-% First, we're going to create ipsilateral and contralateral dataframes 
-% that have one row for each sub and one column for eye-cb connectivity 
-% for each task in each cb subregion
+% First, we're going to create dataframes that has one row for each sub
+% and one column for both ipsilateral and contralateral 
+% eye-cb connectivity for each task in each cb subregion
 
 for h = 1:length(hemi)
     for c = 1:length(cb)

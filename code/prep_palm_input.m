@@ -11,7 +11,7 @@ clc
 codedir = '~/Documents/Github/istart-eyeballs/code/';
 addpath(codedir)
 %datadir = '/data/projects/istart-eyeballs/derivatives/extractions/';
-datadir = '~/Documents/Github/istart-eyeballs/derivatives/extractions/';
+datadir = '~/Documents/Github/istart-eyeballs/derivatives/imaging_plots/';
 addpath(datadir)
 
 sub = {'1001', '1003', '1004', '1006', '1009', '1010', '1011', '1012', '1013', '1015', '1016', '1019', ...
@@ -60,7 +60,7 @@ for c = 1:length(cb)
         graph_data_df_left(s,1) = str2double(sub{s});
         
         % Check for doors
-        f_doors_left = fullfile([datadir 'doors/sub-' sub{s} '_task-doors_left_cb-' cb{c} '.txt']);
+        f_doors_left = fullfile([datadir 'doors/sub-' sub{s} '_task-doors_eye-left_hemi-left_cb-' cb{c} '.txt']);
         if isfile(f_doors_left)
             file_doors_left = fopen(f_doors_left);
             value_doors_left = fscanf(file_doors_left,format);
@@ -72,7 +72,7 @@ for c = 1:length(cb)
         end
 
         % Check for socialdoors
-        f_socialdoors_left = fullfile([datadir 'socialdoors/sub-' sub{s} '_task-socialdoors_left_cb-' cb{c} '.txt']);
+        f_socialdoors_left = fullfile([datadir 'socialdoors/sub-' sub{s} '_task-socialdoors_eye-left_hemi-left_cb-' cb{c} '.txt']);
         if isfile(f_socialdoors_left)
             file_socialdoors_left = fopen(f_socialdoors_left);
             value_socialdoors_left = fscanf(file_socialdoors_left,format);
@@ -84,7 +84,7 @@ for c = 1:length(cb)
         end
 
         % Check for ugdg
-        f_ugdg_left = fullfile([datadir 'ugdg/sub-' sub{s} '_task-ugdg_left_cb-' cb{c} '.txt']);
+        f_ugdg_left = fullfile([datadir 'ugdg/sub-' sub{s} '_task-ugdg_eye-left_hemi-left_cb-' cb{c} '.txt']);
         if isfile(f_ugdg_left)
             file_ugdg_left = fopen(f_ugdg_left);
             value_ugdg_left = fscanf(file_ugdg_left,format);
@@ -109,7 +109,7 @@ for c = 1:length(cb)
         one_stim_df_left(s,1) = str2double(sub{s});
         
         % Check for mid
-        f_mid_left = fullfile([datadir 'mid/sub-' sub{s} '_task-mid_left_cb-' cb{c} '.txt']);
+        f_mid_left = fullfile([datadir 'mid/sub-' sub{s} '_task-mid_eye-left_hemi-left_cb-' cb{c} '.txt']);
         if isfile(f_mid_left)
             file_mid_left = fopen(f_mid_left);
             value_mid_left = fscanf(file_mid_left,format);
@@ -121,7 +121,7 @@ for c = 1:length(cb)
         end
 
         % Check for sharedreward
-        f_sharedreward_left = fullfile([datadir 'sharedreward/sub-' sub{s} '_task-sharedreward_left_cb-' cb{c} '.txt']);
+        f_sharedreward_left = fullfile([datadir 'sharedreward/sub-' sub{s} '_task-sharedreward_eye-left_hemi-left_cb-' cb{c} '.txt']);
         if isfile(f_sharedreward_left)
             file_sharedreward = fopen(f_sharedreward_left);
             value_sharedreward_left = fscanf(file_sharedreward,format);
@@ -162,7 +162,7 @@ for c = 1:length(cb)
         graph_data_df_left(s,1) = str2double(sub{s});
         
         % Check for doors
-        f_doors_left = fullfile([datadir 'doors/sub-' sub{s} '_task-doors_left_cb-' cb{c} '.txt']);
+        f_doors_left = fullfile([datadir 'doors/sub-' sub{s} '_task-doors_eye-left_hemi-left_cb-' cb{c} '.txt']);
         if isfile(f_doors_left)
             file_doors_left = fopen(f_doors_left);
             value_doors_left = fscanf(file_doors_left,format);
@@ -172,7 +172,7 @@ for c = 1:length(cb)
             disp("File "+f_doors_left+" does not exist");
         end
         % Check for socialdoors
-        f_socialdoors_left = fullfile([datadir 'socialdoors/sub-' sub{s} '_task-socialdoors_left_cb-' cb{c} '.txt']);
+        f_socialdoors_left = fullfile([datadir 'socialdoors/sub-' sub{s} '_task-socialdoors_eye-left_hemi-left_cb-' cb{c} '.txt']);
         if isfile(f_socialdoors_left)
             file_socialdoors_left = fopen(f_socialdoors_left);
             value_socialdoors_left = fscanf(file_socialdoors_left,format);
@@ -182,7 +182,7 @@ for c = 1:length(cb)
             disp("File "+f_socialdoors_left+" does not exist");
         end
         % Check for ugdg
-        f_ugdg_left = fullfile([datadir 'ugdg/sub-' sub{s} '_task-ugdg_left_cb-' cb{c} '.txt']);
+        f_ugdg_left = fullfile([datadir 'ugdg/sub-' sub{s} '_task-ugdg_eye-left_hemi-left_cb-' cb{c} '.txt']);
         if isfile(f_ugdg_left)
             file_ugdg_left = fopen(f_ugdg_left);
             value_ugdg_left = fscanf(file_ugdg_left,format);
@@ -192,7 +192,7 @@ for c = 1:length(cb)
             disp("File "+f_ugdg_left+" does not exist");
         end
         % Check for mid
-        f_mid_left = fullfile([datadir 'mid/sub-' sub{s} '_task-mid_left_cb-' cb{c} '.txt']);
+        f_mid_left = fullfile([datadir 'mid/sub-' sub{s} '_task-mid_eye-left_hemi-left_cb-' cb{c} '.txt']);
         if isfile(f_mid_left)
             file_mid_left = fopen(f_mid_left);
             value_mid_left = fscanf(file_mid_left,format);
@@ -202,7 +202,7 @@ for c = 1:length(cb)
             disp("File "+f_mid_left+" does not exist");
         end
         % Check for sharedreward
-        f_sharedreward_left = fullfile([datadir 'sharedreward/sub-' sub{s} '_task-sharedreward_left_cb-' cb{c} '.txt']);
+        f_sharedreward_left = fullfile([datadir 'sharedreward/sub-' sub{s} '_task-sharedreward_eye-left_hemi-left_cb-' cb{c} '.txt']);
         if isfile(f_sharedreward_left)
             file_sharedreward = fopen(f_sharedreward_left);
             value_sharedreward_left = fscanf(file_sharedreward,format);
@@ -295,7 +295,7 @@ for c = 1:length(cb)
         two_stim_df_right(s,6) = c;
         
         % Check for doors
-        f_doors = fullfile([datadir 'doors/sub-' sub{s} '_task-doors_right_cb-' cb{c} '.txt']);
+        f_doors = fullfile([datadir 'doors/sub-' sub{s} '_task-doors_eye-right_hemi-right_cb-' cb{c} '.txt']);
         if isfile(f_doors)
             file_doors = fopen(f_doors);
             value_doors = fscanf(file_doors,format);
@@ -307,7 +307,7 @@ for c = 1:length(cb)
         end
 
         % Check for socialdoors
-        f_socialdoors = fullfile([datadir 'socialdoors/sub-' sub{s} '_task-socialdoors_right_cb-' cb{c} '.txt']);
+        f_socialdoors = fullfile([datadir 'socialdoors/sub-' sub{s} '_task-socialdoors_eye-right_hemi-right_cb-' cb{c} '.txt']);
         if isfile(f_socialdoors)
             file_socialdoors = fopen(f_socialdoors);
             value_socialdoors = fscanf(file_socialdoors,format);
@@ -319,7 +319,7 @@ for c = 1:length(cb)
         end
 
         % Check for ugdg
-        f_ugdg = fullfile([datadir 'ugdg/sub-' sub{s} '_task-ugdg_right_cb-' cb{c} '.txt']);
+        f_ugdg = fullfile([datadir 'ugdg/sub-' sub{s} '_task-ugdg_eye-right_hemi-right_cb-' cb{c} '.txt']);
         if isfile(f_ugdg)
             file_ugdg = fopen(f_ugdg);
             value_ugdg = fscanf(file_ugdg,format);
@@ -343,7 +343,7 @@ for c = 1:length(cb)
         one_stim_df_right(s,1) = str2double(sub{s});
         
         % Check for mid
-        f_mid = fullfile([datadir 'mid/sub-' sub{s} '_task-mid_right_cb-' cb{c} '.txt']);
+        f_mid = fullfile([datadir 'mid/sub-' sub{s} '_task-mid_eye-right_hemi-right_cb-' cb{c} '.txt']);
         if isfile(f_mid)
             file_mid = fopen(f_mid);
             value_mid = fscanf(file_mid,format);
@@ -355,7 +355,7 @@ for c = 1:length(cb)
         end
 
         % Check for sharedreward
-        f_sharedreward = fullfile([datadir 'sharedreward/sub-' sub{s} '_task-sharedreward_right_cb-' cb{c} '.txt']);
+        f_sharedreward = fullfile([datadir 'sharedreward/sub-' sub{s} '_task-sharedreward_eye-right_hemi-right_cb-' cb{c} '.txt']);
         if isfile(f_sharedreward)
             file_sharedreward = fopen(f_sharedreward);
             value_sharedreward = fscanf(file_sharedreward,format);
@@ -396,7 +396,7 @@ for c = 1:length(cb)
         graph_data_df_right(s,1) = str2double(sub{s});
         
         % Check for doors
-        f_doors_right = fullfile([datadir 'doors/sub-' sub{s} '_task-doors_right_cb-' cb{c} '.txt']);
+        f_doors_right = fullfile([datadir 'doors/sub-' sub{s} '_task-doors_eye-right_hemi-right_cb-' cb{c} '.txt']);
         if isfile(f_doors_right)
             file_doors_right = fopen(f_doors_right);
             value_doors_right = fscanf(file_doors_right,format);
@@ -406,7 +406,7 @@ for c = 1:length(cb)
             disp("File "+f_doors_right+" does not exist");
         end
         % Check for socialdoors
-        f_socialdoors_right = fullfile([datadir 'socialdoors/sub-' sub{s} '_task-socialdoors_right_cb-' cb{c} '.txt']);
+        f_socialdoors_right = fullfile([datadir 'socialdoors/sub-' sub{s} '_task-socialdoors_eye-right_hemi-right_cb-' cb{c} '.txt']);
         if isfile(f_socialdoors_right)
             file_socialdoors_right = fopen(f_socialdoors_right);
             value_socialdoors_right = fscanf(file_socialdoors_right,format);
@@ -416,7 +416,7 @@ for c = 1:length(cb)
             disp("File "+f_socialdoors_right+" does not exist");
         end
         % Check for ugdg
-        f_ugdg_right = fullfile([datadir 'ugdg/sub-' sub{s} '_task-ugdg_right_cb-' cb{c} '.txt']);
+        f_ugdg_right = fullfile([datadir 'ugdg/sub-' sub{s} '_task-ugdg_eye-right_hemi-right_cb-' cb{c} '.txt']);
         if isfile(f_ugdg_right)
             file_ugdg_right = fopen(f_ugdg_right);
             value_ugdg_right = fscanf(file_ugdg_right,format);
@@ -426,7 +426,7 @@ for c = 1:length(cb)
             disp("File "+f_ugdg_right+" does not exist");
         end
         % Check for mid
-        f_mid_right = fullfile([datadir 'mid/sub-' sub{s} '_task-mid_right_cb-' cb{c} '.txt']);
+        f_mid_right = fullfile([datadir 'mid/sub-' sub{s} '_task-mid_eye-right_hemi-right_cb-' cb{c} '.txt']);
         if isfile(f_mid_right)
             file_mid_right = fopen(f_mid_right);
             value_mid_right = fscanf(file_mid_right,format);
@@ -436,7 +436,7 @@ for c = 1:length(cb)
             disp("File "+f_mid_right+" does not exist");
         end
         % Check for sharedreward
-        f_sharedreward_right = fullfile([datadir 'sharedreward/sub-' sub{s} '_task-sharedreward_right_cb-' cb{c} '.txt']);
+        f_sharedreward_right = fullfile([datadir 'sharedreward/sub-' sub{s} '_task-sharedreward_eye-right_hemi-right_cb-' cb{c} '.txt']);
         if isfile(f_sharedreward_right)
             file_sharedreward_right = fopen(f_sharedreward_right);
             value_sharedreward_right = fscanf(file_sharedreward_right,format);
@@ -547,10 +547,10 @@ ngroups = size(y, 1);
 nbars = size(y, 2);
 % Calculating the width for each bar group
 groupwidth = min(0.8, nbars/(nbars + 1.5));
-for i = 1:nbars
-    x = (1:ngroups) - groupwidth/2 + (2*i-1) * groupwidth / (2*nbars);
-    errorbar(x, y(:,i), err(:,i), '.');
-end
+%for i = 1:nbars
+%    x = (1:ngroups) - groupwidth/2 + (2*i-1) * groupwidth / (2*nbars);
+%    errorbar(x, y(:,i), err(:,i), '.');
+%end
 hold off
 
 %% Right: Write graph data (two-stim > one-stim for each ROI)
