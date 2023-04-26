@@ -7,7 +7,7 @@
 scriptdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 basedir="$(dirname "$scriptdir")"
 
-for task in doors socialdoors mid sharedreward ugdg; do
+for task in doors; do
 	echo ${task}	
 	for cb in `cat ${basedir}/code/CB_ROIs.txt`; do 
 		echo ${cb}		
