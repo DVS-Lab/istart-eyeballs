@@ -6,3 +6,22 @@
 mkdir .files;cp /usr/share/fsl/6.0.4/doc/fsl.css .files;cp -r /usr/share/fsl/6.0.4/doc/images .files/images
 
 /usr/share/fsl/6.0.4/bin/fsl_sub -T 60 -l logs -N feat2_pre   /usr/share/fsl/6.0.4/bin/feat /data/projects/istart-eyeballs/derivatives/palm_model-2.gfeat/design.fsf -D /data/projects/istart-eyeballs/derivatives/palm_model-2.gfeat -gfeatprep
+208075
+
+/usr/share/fsl/6.0.4/bin/fsl_sub -T 60 -l logs -N feat3a_flame -j 208075  /usr/share/fsl/6.0.4/bin/feat /data/projects/istart-eyeballs/derivatives/palm_model-2.gfeat/cope1.feat/design.fsf -D /data/projects/istart-eyeballs/derivatives/palm_model-2.gfeat/cope1.feat -I 1 -flame1
+452225
+
+/usr/share/fsl/6.0.4/bin/fsl_sub -T 60 -l logs -N feat3b_flame -j 452225 -t ./.flame
+454649
+
+/usr/share/fsl/6.0.4/bin/fsl_sub -T 60 -l logs -N feat3c_flame -j 454649  /usr/share/fsl/6.0.4/bin/feat /data/projects/istart-eyeballs/derivatives/palm_model-2.gfeat/cope1.feat/design.fsf -D /data/projects/istart-eyeballs/derivatives/palm_model-2.gfeat/cope1.feat -flame3
+468859
+
+/usr/share/fsl/6.0.4/bin/fsl_sub -T 60 -l logs -N feat4_post -j 468859  /usr/share/fsl/6.0.4/bin/feat /data/projects/istart-eyeballs/derivatives/palm_model-2.gfeat/cope1.feat/design.fsf -D /data/projects/istart-eyeballs/derivatives/palm_model-2.gfeat/cope1.feat -poststats 1
+473343
+
+/usr/share/fsl/6.0.4/bin/fsl_sub -T 1 -l logs -N feat5_stop -j 473343  /usr/share/fsl/6.0.4/bin/feat /data/projects/istart-eyeballs/derivatives/palm_model-2.gfeat/cope1.feat/design.fsf -D /data/projects/istart-eyeballs/derivatives/palm_model-2.gfeat/cope1.feat -stop
+475327
+
+/usr/share/fsl/6.0.4/bin/fsl_sub -T 1 -l logs -N feat5_stop -j 475327  /usr/share/fsl/6.0.4/bin/feat /data/projects/istart-eyeballs/derivatives/palm_model-2.gfeat/cope1.feat/design.fsf -D /data/projects/istart-eyeballs/derivatives/palm_model-2.gfeat -stop
+475482

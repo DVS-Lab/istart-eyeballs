@@ -1,0 +1,2 @@
+
+/bin/rm -f stats/zem* stats/zols* stats/mask* ; /bin/mv dof stats

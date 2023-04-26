@@ -1,0 +1,9 @@
+# Configuration file for PALM.
+# Version alpha119, running in MATLAB 9.12.0.2039608 (R2022a) Update 5.
+# 26-Apr-2023 01:55:49
+
+-i h1_data_left.csv
+-d design.mat
+-t design.con
+-o /data/projects/istart-eyeballs/derivatives/left/
+-corrcon
