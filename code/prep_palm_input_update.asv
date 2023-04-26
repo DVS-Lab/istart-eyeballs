@@ -45,14 +45,14 @@ cb = {'IV', 'V', 'VI', 'Crus_I', 'Crus_II', 'VIIb', 'VIIIa', 'VIIIb', ...
     'IX', 'X', 'Vermis_VI', 'Vermis_VIIIa', 'Vermis_VIIIb', 'Vermis_IX'};
 
 % Specify eig (0=non-eig, 1=eig)
-eig = '1'; 
+eig = '0'; 
 
 format = '%c';
 
 %% Read in raw data
-% First, we're going to create dataframes that has one row for each sub
-% and one column for both ipsilateral and contralateral 
-% eye-cb connectivity for each task in each cb subregion
+% First, we're going to create ipsilateral and contralateral dataframes 
+% that have one row for each sub and one column for eye-cb connectivity 
+% for each task in each cb subregion
 
 for h = 1:length(hemi)
     for c = 1:length(cb)
@@ -385,7 +385,7 @@ for h = 1:length(hemi)
     ylabel('5-Task Avg (zstat)');
     xlabel('CB Subregion');
     %xline([1.5 2.5 3.5 4.5 5.5 6.5 7.5 8.5 9.5 10.5 11.5 12.5 13.5]);
-    ylim([-.2 .1]);
+    ylim([-.25 .15]);
 
     hold on
     er = errorbar(x,y,e1,e2);
@@ -422,6 +422,8 @@ for h = 1:length(hemi)
     % Write data to .xlsx file
     if strcmp(hemi{h},'left')
         if strcmp(eig,'0')
+            h2_data_table_left = h2_data_table;
+            h2_data_table_left = h2_data_table;
             filename = 'h2_data_left.xlsx';
         elseif strcmp(eig,'1')
             filename = 'h2_data_left_eig.xlsx';
@@ -641,7 +643,44 @@ xticklabels({'IV', 'V', 'VI', 'Crus I', 'Crus II', 'VIIb', 'VIIIa', 'VIIIb', ...
 ylabel('L(Ipsi > Contra) > R(Ipsi > Contra) (zstat)');
 xlabel('CB Subregion');
 %xline([1.5 2.5 3.5 4.5 5.5 6.5 7.5 8.5 9.5 10.5 11.5 12.5 13.5]);
-ylim([-.2 .1]);
+ylim([-.15 .25]);
+
+hold on
+er = errorbar(x,y,e1,e2);
+er.Color = [0 0 0];
+er.LineStyle = 'none';
+
+hold off
+
+%% Plot h1.2_data for 2>1
+% Plot: y-axis = signal, x-axis = one bar for each task/subregion
+
+% Calculate avg & std error
+for k=1:length(df_ipsi_left_avg(1,:))
+    h1_2data(53,k)=mean(h1_2data(1:52,k),"omitnan");
+    h1_2data(54,k)=(std(h1_2data(1:52,k),"omitnan"))/sqrt(52);
+end
+    
+% Add error bars (standard error)
+e1 = [h1_2data(54,:)];
+e2 = e1*-1;
+
+figure
+    
+% Specify data
+x = 1:14;
+y = [h1_2data(53,:)];
+bar(x,y);
+
+title('Avg Left (Ipsi > Contra) > Right (Ipsi > Contra)');
+
+xticks(1:14);
+xticklabels({'IV', 'V', 'VI', 'Crus I', 'Crus II', 'VIIb', 'VIIIa', 'VIIIb', ...
+    'IX', 'X', 'Vermis VI', 'Vermis VIIIa', 'Vermis VIIIb', 'Vermis IX'});
+ylabel('L(Ipsi > Contra) > R(Ipsi > Contra) (zstat)');
+xlabel('CB Subregion');
+%xline([1.5 2.5 3.5 4.5 5.5 6.5 7.5 8.5 9.5 10.5 11.5 12.5 13.5]);
+ylim([-.15 .25]);
 
 hold on
 er = errorbar(x,y,e1,e2);
