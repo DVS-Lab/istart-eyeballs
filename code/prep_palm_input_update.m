@@ -422,6 +422,8 @@ for h = 1:length(hemi)
     % Write data to .xlsx file
     if strcmp(hemi{h},'left')
         if strcmp(eig,'0')
+            h2_data_left = h2_data;
+            h2_data_table_left = h2_data_table;
             filename = 'h2_data_left.xlsx';
         elseif strcmp(eig,'1')
             filename = 'h2_data_left_eig.xlsx';
@@ -429,6 +431,8 @@ for h = 1:length(hemi)
         writetable(h2_data_table,filename,'Sheet',1,'Range','A1');
     elseif strcmp(hemi{h},'right')
         if strcmp(eig,'0')
+            h2_data_right = h2_data;
+            h2_data_table_right = h2_data_table;
             filename = 'h2_data_right.xlsx';
         elseif strcmp(eig,'1')
             filename = 'h2_data_right_eig.xlsx';
@@ -639,6 +643,43 @@ xticks(1:14);
 xticklabels({'IV', 'V', 'VI', 'Crus I', 'Crus II', 'VIIb', 'VIIIa', 'VIIIb', ...
     'IX', 'X', 'Vermis VI', 'Vermis VIIIa', 'Vermis VIIIb', 'Vermis IX'});
 ylabel('L(Ipsi > Contra) > R(Ipsi > Contra) (zstat)');
+xlabel('CB Subregion');
+%xline([1.5 2.5 3.5 4.5 5.5 6.5 7.5 8.5 9.5 10.5 11.5 12.5 13.5]);
+ylim([-.15 .25]);
+
+hold on
+er = errorbar(x,y,e1,e2);
+er.Color = [0 0 0];
+er.LineStyle = 'none';
+
+hold off
+
+%% Plot h1.2_data for 2>1
+% Plot: y-axis = signal, x-axis = one bar for each task/subregion
+
+% Calculate avg & std error
+for k=1:length(df_ipsi_left_avg(1,:))
+    h1_2data(53,k)=mean(h1_2data(1:52,k),"omitnan");
+    h1_2data(54,k)=(std(h1_2data(1:52,k),"omitnan"))/sqrt(52);
+end
+    
+% Add error bars (standard error)
+e1 = [h1_2data(54,:)];
+e2 = e1*-1;
+
+figure
+    
+% Specify data
+x = 1:14;
+y = [h1_2data(53,:)];
+bar(x,y);
+
+title('Avg Left (2 > 1) > Right (2 > 1)');
+
+xticks(1:14);
+xticklabels({'IV', 'V', 'VI', 'Crus I', 'Crus II', 'VIIb', 'VIIIa', 'VIIIb', ...
+    'IX', 'X', 'Vermis VI', 'Vermis VIIIa', 'Vermis VIIIb', 'Vermis IX'});
+ylabel('L(2 > 1) > R(2 > 1) (zstat)');
 xlabel('CB Subregion');
 %xline([1.5 2.5 3.5 4.5 5.5 6.5 7.5 8.5 9.5 10.5 11.5 12.5 13.5]);
 ylim([-.15 .25]);
