@@ -7,7 +7,7 @@ nruns=1
 
 #for task in socialdoors; do
 #for task in doors socialdoors mid sharedreward ugdg; do
-for task in mid; do
+for task in ugdg; do
 	for ppi in "eyeball_left" "eyeball_right"; do
 		#for sub in 1303 3101 3116 3122 3125 3140 3143 3152 3166 3167 3170 3173 3176 3189 3190 3199 3200 3206 3210 3212 3218 3220 3223; do
 		#for sub in 1001 1003 1004 ; do

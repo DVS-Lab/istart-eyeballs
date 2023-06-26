@@ -3141,3 +3141,48 @@ missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1003/L
 missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1243/L1_task-ugdg_model-1_type-ppi_seed-eyeball_left_run-1_sm-5 
 missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1243/L1_task-ugdg_model-1_type-ppi_seed-eyeball_left_run-1_sm-5_eig 
 missing confounds: /data/projects/istart-eyeballs/derivatives/fsl/confounds/sub-sub-1282/sub-sub-1282_task-doors_run-1_desc-fslConfounds.tsv 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1244/L1_task-ugdg_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1253/L1_task-socialdoors_model-1_type-ppi_seed-eyeball_left_run-1_sm-5 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1253/L1_task-socialdoors_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1301/L1_task-ugdg_model-1_type-ppi_seed-eyeball_left_run-1_sm-5 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-3212/L1_task-ugdg_model-1_type-ppi_seed-eyeball_left_run-1_sm-5 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-3212/L1_task-ugdg_model-1_type-ppi_seed-eyeball_left_run-2_sm-5 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1002/L1_task-doors_model-1_type-ppi_seed-eyeball_left_run-1_sm-5 
+missing confounds: /data/projects/istart-eyeballs/derivatives/fsl/confounds/sub-1002/sub-1002_task-doors_run-2_desc-fslConfounds.tsv 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1007/L1_task-doors_model-1_type-ppi_seed-eyeball_left_run-1_sm-5 
+missing confounds: /data/projects/istart-eyeballs/derivatives/fsl/confounds/sub-1007/sub-1007_task-doors_run-2_desc-fslConfounds.tsv 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1002/L1_task-doors_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-eyeballs/derivatives/fsl/confounds/sub-1002/sub-1002_task-doors_run-2_desc-fslConfounds.tsv 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1007/L1_task-doors_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-eyeballs/derivatives/fsl/confounds/sub-1007/sub-1007_task-doors_run-2_desc-fslConfounds.tsv 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1002/L1_task-socialdoors_model-1_type-ppi_seed-eyeball_left_run-1_sm-5 
+missing confounds: /data/projects/istart-eyeballs/derivatives/fsl/confounds/sub-1002/sub-1002_task-socialdoors_run-2_desc-fslConfounds.tsv 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1007/L1_task-socialdoors_model-1_type-ppi_seed-eyeball_left_run-1_sm-5 
+missing confounds: /data/projects/istart-eyeballs/derivatives/fsl/confounds/sub-1007/sub-1007_task-socialdoors_run-2_desc-fslConfounds.tsv 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1002/L1_task-socialdoors_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-eyeballs/derivatives/fsl/confounds/sub-1002/sub-1002_task-socialdoors_run-2_desc-fslConfounds.tsv 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1007/L1_task-socialdoors_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing confounds: /data/projects/istart-eyeballs/derivatives/fsl/confounds/sub-1007/sub-1007_task-socialdoors_run-2_desc-fslConfounds.tsv 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1002/L1_task-mid_model-1_type-ppi_seed-eyeball_left_run-1_sm-5 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1002/L1_task-mid_model-1_type-ppi_seed-eyeball_left_run-2_sm-5 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1007/L1_task-mid_model-1_type-ppi_seed-eyeball_left_run-1_sm-5 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1007/L1_task-mid_model-1_type-ppi_seed-eyeball_left_run-2_sm-5 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1002/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1002/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-2_sm-5 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1007/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1007/L1_task-mid_model-1_type-ppi_seed-eyeball_right_run-2_sm-5 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1002/L1_task-sharedreward_model-1_type-ppi_seed-eyeball_left_run-1_sm-5 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1002/L1_task-sharedreward_model-1_type-ppi_seed-eyeball_left_run-2_sm-5 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1007/L1_task-sharedreward_model-1_type-ppi_seed-eyeball_left_run-1_sm-5 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1007/L1_task-sharedreward_model-1_type-ppi_seed-eyeball_left_run-2_sm-5 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1002/L1_task-sharedreward_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1002/L1_task-sharedreward_model-1_type-ppi_seed-eyeball_right_run-2_sm-5 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1007/L1_task-sharedreward_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1007/L1_task-sharedreward_model-1_type-ppi_seed-eyeball_right_run-2_sm-5 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1002/L1_task-ugdg_model-1_type-ppi_seed-eyeball_left_run-1_sm-5 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1002/L1_task-ugdg_model-1_type-ppi_seed-eyeball_left_run-2_sm-5 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1007/L1_task-ugdg_model-1_type-ppi_seed-eyeball_left_run-1_sm-5 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1007/L1_task-ugdg_model-1_type-ppi_seed-eyeball_left_run-2_sm-5 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1002/L1_task-ugdg_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1002/L1_task-ugdg_model-1_type-ppi_seed-eyeball_right_run-2_sm-5 
+missing feat output 2: /data/projects/istart-eyeballs/derivatives/fsl/sub-1007/L1_task-ugdg_model-1_type-ppi_seed-eyeball_right_run-1_sm-5 
