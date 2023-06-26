@@ -1,0 +1,11 @@
+# Configuration file for PALM.
+# Version alpha119, running in MATLAB 9.12.0.2039608 (R2022a) Update 5.
+# 19-Dec-2022 22:23:29
+
+-i ../../../code/h2_input_left.csv
+-d ../../../code/h2_design.mat
+-t ../../../code/h2_design.con
+-o /data/projects/istart-eyeballs/derivatives/h2_palm/left/
+-corrcon
+-ise
+-ee
