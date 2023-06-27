@@ -22,9 +22,10 @@ cd(codedir)
 % Specify subs
 sub = {'1001', '1003', '1004', '1006', '1009', '1010', '1011', '1012', '1013', '1015', '1016', '1019', ...
     '1021', '1242', '1243', '1244', '1245', '1247', '1248', '1249', '1251', '1253', '1255', '1276', '1282', ...
-    '1286', '1294', '1300', '1301', '1302', '1303', '3116', '3122', '3125', '3140', '3143', '3152', ...
+    '1286', '1294', '1300', '1301', '1302', '1303', '3101', '3116', '3122', '3125', '3140', '3143', '3152', ...
     '3166', '3167', '3170', '3173', '3176', '3189', '3190', '3199', '3200', '3206', '3210', '3212', '3218', ...
     '3220', '3223'};
+nsub = length(sub);
 
 % Preallocate dataframes
 df=zeros(length(sub),6);
@@ -87,7 +88,7 @@ for h = 1:length(hemi)
                         disp("Task var not recognized; enter a proper task");
                     end
                 else
-                    disp("No data for "+f);
+                    %disp("No data for "+f);
                     if strcmp(task{t},'doors')
                         df(s,2) = NaN;
                     elseif strcmp(task{t},'socialdoors')
@@ -132,7 +133,7 @@ for h = 1:length(hemi)
                         disp("Task var not recognized; enter a proper task");
                     end
                 else
-                    disp("No data for "+f);
+                    %disp("No data for "+f);
                     if strcmp(task{t},'doors')
                         df_contra(s,2) = NaN;
                     elseif strcmp(task{t},'socialdoors')
@@ -224,17 +225,21 @@ for h = 1:length(hemi)
     if strcmp(hemi{h},'left')
         if strcmp(eig,'0')
             filename = 'df_full_left.xlsx';
+            contra_filename = 'df_contra_full_left.xlsx';
         elseif strcmp(eig,'1')
             filename = 'df_full_left_eig.xlsx';
         end
         writetable(df_full_table,filename,'Sheet',1,'Range','A1');
+        writetable(df_contra_full_table,contra_filename,'Sheet',1,'Range','A1');
     elseif strcmp(hemi{h},'right')
         if strcmp(eig,'0')
             filename = 'df_full_right.xlsx';
+            contra_filename = 'df_contra_full_right.xlsx';
         elseif strcmp(eig,'1')
             filename = 'df_full_right_eig.xlsx';
         end
         writetable(df_full_table,filename,'Sheet',1,'Range','A1')
+        writetable(df_contra_full_table,contra_filename,'Sheet',1,'Range','A1');
     else
     
     % STOP: at this point you should have a var called 'df_full_table' that
@@ -251,16 +256,16 @@ for h = 1:length(hemi)
 
     % Append average signal and error to last row of df_full
     for k=1:length(df_full(1,:))
-        df_full(53,k)=mean(df_full(1:52,k),"omitnan");
-        df_full(54,k)=(std(df_full(1:52,k),"omitnan"))/sqrt(52);
+        df_full(nsub+1,k)=mean(df_full(1:nsub,k),"omitnan");
+        df_full(nsub+2,k)=(std(df_full(1:nsub,k),"omitnan"))/sqrt(nsub);
     end
 
     figure
     
     % Specify data
-    y = [df_full(53,1:5); df_full(53,6:10); df_full(53,11:15); df_full(53,16:20); df_full(53,21:25); df_full(53,26:30); ...
-        df_full(53,31:35); df_full(53,36:40); df_full(53,41:45); df_full(53,46:50); df_full(53,51:55); df_full(53,56:60); ...
-        df_full(53,61:65); df_full(53,66:70)];
+    y = [df_full(nsub+1,1:5); df_full(nsub+1,6:10); df_full(nsub+1,11:15); df_full(nsub+1,16:20); df_full(nsub+1,21:25); df_full(nsub+1,26:30); ...
+        df_full(nsub+1,31:35); df_full(nsub+1,36:40); df_full(nsub+1,41:45); df_full(nsub+1,46:50); df_full(nsub+1,51:55); df_full(nsub+1,56:60); ...
+        df_full(nsub+1,61:65); df_full(nsub+1,66:70)];
     bar(y,'grouped');
     if strcmp(hemi{h},'left')
         if strcmp(eig,'0')
@@ -352,19 +357,19 @@ for h = 1:length(hemi)
 
     % Append average signal and error to last row of df_full
     for k=1:length(h1_data(1,:))
-        h1_data(53,k)=mean(h1_data(1:52,k),"omitnan");
-        h1_data(54,k)=(std(h1_data(1:52,k),"omitnan"))/sqrt(52);
+        h1_data(nsub+1,k)=mean(h1_data(1:nsub,k),"omitnan");
+        h1_data(nsub+2,k)=(std(h1_data(1:nsub,k),"omitnan"))/sqrt(nsub);
     end
     
     % Add error bars (standard error)
-    e1 = [h1_data(54,:)];
+    e1 = [h1_data(nsub+2,:)];
     e2 = e1*-1;
 
     figure
     
     % Specify data
     x = 1:14;
-    y = [h1_data(53,:)];
+    y = [h1_data(nsub+1,:)];
     bar(x,y);
     if strcmp(hemi{h},'left')
         if strcmp(eig,'0')
@@ -457,19 +462,19 @@ for h = 1:length(hemi)
     % Plot 1 (one bar per CB)
     % Append average signal and error to last row of df_full
     for k=1:length(h2_data(1,:))
-        h2_data(53,k)=mean(h2_data(1:52,k),"omitnan");
-        h2_data(54,k)=(std(h2_data(1:52,k),"omitnan"))/sqrt(52);
+        h2_data(nsub+1,k)=mean(h2_data(1:nsub,k),"omitnan");
+        h2_data(nsub+2,k)=(std(h2_data(1:nsub,k),"omitnan"))/sqrt(nsub);
     end
     
     % Add error bars (standard error)
-    e1 = [h2_data(54,:)];
+    e1 = [h2_data(nsub+2,:)];
     e2 = e1*-1;
 
     figure
     
     % Specify data
     x = 1:14;
-    y = [h2_data(53,:)];
+    y = [h2_data(nsub+1,:)];
     bar(x,y);
     if strcmp(hemi{h},'left')
         if strcmp(eig,'0')
@@ -513,16 +518,16 @@ for h = 1:length(hemi)
     
     % Take mean for each category within regions and append to h2_plot2
     for k=1:length(h2_plot2(1,:))
-        h2_plot2(53,k)=mean(h2_plot2(1:52,k),"omitnan");
-        h2_plot2(54,k)=(std(h2_plot2(1:52,k),"omitnan"))/sqrt(52);
+        h2_plot2(nsub+1,k)=mean(h2_plot2(1:nsub,k),"omitnan");
+        h2_plot2(nsub+2,k)=(std(h2_plot2(1:nsub,k),"omitnan"))/sqrt(nsub);
     end
 
     figure
     
     % Specify data
-    y = [h2_plot2(53,1:2); h2_plot2(53,3:4); h2_plot2(53,5:6); h2_plot2(53,7:8); h2_plot2(53,9:10); h2_plot2(53,11:12); ...
-        h2_plot2(53,13:14); h2_plot2(53,15:16); h2_plot2(53,17:18); h2_plot2(53,19:20); h2_plot2(53,21:22); h2_plot2(53,23:24); ...
-        h2_plot2(53,25:26); h2_plot2(53,27:28)];
+    y = [h2_plot2(nsub+1,1:2); h2_plot2(nsub+1,3:4); h2_plot2(nsub+1,5:6); h2_plot2(nsub+1,7:8); h2_plot2(nsub+1,9:10); h2_plot2(nsub+1,11:12); ...
+        h2_plot2(nsub+1,13:14); h2_plot2(nsub+1,15:16); h2_plot2(nsub+1,17:18); h2_plot2(nsub+1,19:20); h2_plot2(nsub+1,21:22); h2_plot2(nsub+1,23:24); ...
+        h2_plot2(nsub+1,25:26); h2_plot2(nsub+1,27:28)];
     b=bar(y,'grouped');
     if strcmp(hemi{h},'left')
         if strcmp(eig,'0')
@@ -542,15 +547,15 @@ for h = 1:length(hemi)
         'IX', 'X', 'Vermis VI', 'Vermis VIIIa', 'Vermis VIIIb', 'Vermis IX'});
     ylabel('zstat');
     xlabel('CB Subregion');
-    xline([1.5 2.5 3.5 4.5 5.5 6.5 7.5 8.5 9.5 10.5 11.5 12.5 13.5]);
+    %xline([1.5 2.5 3.5 4.5 5.5 6.5 7.5 8.5 9.5 10.5 11.5 12.5 13.5]);
     ylim([-.3 .2]);
     leg = {'Two-Stim', 'One-Stim'};
     legend(leg,'Location','southwest');
     
     % Add error bars (standard error)
-    e1 = [h2_plot2(54,1:2); h2_plot2(54,3:4); h2_plot2(54,5:6); h2_plot2(54,7:8); h2_plot2(54,9:10); h2_plot2(54,11:12); ...
-        h2_plot2(54,13:14); h2_plot2(54,15:16); h2_plot2(54,17:18); h2_plot2(54,19:20); h2_plot2(54,21:22); h2_plot2(54,23:24); ...
-        h2_plot2(54,25:26); h2_plot2(54,27:28)];
+    e1 = [h2_plot2(nsub+2,1:2); h2_plot2(nsub+2,3:4); h2_plot2(nsub+2,5:6); h2_plot2(nsub+2,7:8); h2_plot2(nsub+2,9:10); h2_plot2(nsub+2,11:12); ...
+        h2_plot2(nsub+2,13:14); h2_plot2(nsub+2,15:16); h2_plot2(nsub+2,17:18); h2_plot2(nsub+2,19:20); h2_plot2(nsub+2,21:22); h2_plot2(nsub+2,23:24); ...
+        h2_plot2(nsub+2,25:26); h2_plot2(nsub+2,27:28)];
     hold on
     [ngroups,nbars] = size(y);
     x = nan(nbars, ngroups);
@@ -562,12 +567,12 @@ for h = 1:length(hemi)
 
     % Save contralateral data
     if hemi{h} == "left"
-        df_leftEye_leftHemi = df_full(1:52,:);
+        df_leftEye_leftHemi = df_full(1:nsub,:);
         df_leftEye_leftHemi_table = df_full_table;
         df_leftEye_rightHemi = df_contra_full;
         df_leftEye_rightHemi_table = df_contra_full_table;
     else
-        df_rightEye_rightHemi = df_full(1:52,:);
+        df_rightEye_rightHemi = df_full(1:nsub,:);
         df_rightEye_rightHemi_table = df_full_table;
         df_rightEye_leftHemi = df_contra_full;
         df_rightEye_leftHemi_table = df_contra_full_table;
@@ -622,19 +627,19 @@ end
 
 % Calculate avg & std error
 for k=1:length(df_ipsi_left_avg(1,:))
-    h1_2data(53,k)=mean(h1_2data(1:52,k),"omitnan");
-    h1_2data(54,k)=(std(h1_2data(1:52,k),"omitnan"))/sqrt(52);
+    h1_2data(nsub+1,k)=mean(h1_2data(1:nsub,k),"omitnan");
+    h1_2data(nsub+2,k)=(std(h1_2data(1:nsub,k),"omitnan"))/sqrt(nsub);
 end
     
 % Add error bars (standard error)
-e1 = [h1_2data(54,:)];
+e1 = [h1_2data(nsub+1,:)];
 e2 = e1*-1;
 
 figure
     
 % Specify data
 x = 1:14;
-y = [h1_2data(53,:)];
+y = [h1_2data(nsub+1,:)];
 bar(x,y);
 
 title('Avg Left (Ipsi > Contra) > Right (Ipsi > Contra)');
@@ -659,19 +664,19 @@ hold off
 
 % Calculate avg & std error
 for k=1:length(df_ipsi_left_avg(1,:))
-    h1_2data(53,k)=mean(h1_2data(1:52,k),"omitnan");
-    h1_2data(54,k)=(std(h1_2data(1:52,k),"omitnan"))/sqrt(52);
+    h1_2data(nsub+1,k)=mean(h1_2data(1:nsub,k),"omitnan");
+    h1_2data(nsub+2,k)=(std(h1_2data(1:nsub,k),"omitnan"))/sqrt(nsub);
 end
     
 % Add error bars (standard error)
-e1 = [h1_2data(54,:)];
+e1 = [h1_2data(nsub+2,:)];
 e2 = e1*-1;
 
 figure
     
 % Specify data
 x = 1:14;
-y = [h1_2data(53,:)];
+y = [h1_2data(nsub+1,:)];
 bar(x,y);
 
 title('Avg Left (2 > 1) > Right (2 > 1)');
@@ -697,19 +702,19 @@ hold off
 
 % Left Ipsilateral 5-task Avg
 for k=1:length(df_ipsi_left_avg(1,:))
-    df_ipsi_left_avg(53,k)=mean(df_ipsi_left_avg(1:52,k),"omitnan");
-    df_ipsi_left_avg(54,k)=(std(df_ipsi_left_avg(1:52,k),"omitnan"))/sqrt(52);
+    df_ipsi_left_avg(nsub+1,k)=mean(df_ipsi_left_avg(1:nsub,k),"omitnan");
+    df_ipsi_left_avg(nsub+2,k)=(std(df_ipsi_left_avg(1:nsub,k),"omitnan"))/sqrt(nsub);
 end
     
 % Add error bars (standard error)
-e1 = [df_ipsi_left_avg(54,:)];
+e1 = [df_ipsi_left_avg(nsub+1,:)];
 e2 = e1*-1;
 
 figure
     
 % Specify data
 x = 1:14;
-y = [df_ipsi_left_avg(53,:)];
+y = [df_ipsi_left_avg(nsub+1,:)];
 bar(x,y);
 
 if strcmp(eig,'0')
@@ -735,19 +740,19 @@ hold off
 
 % Left Contralateral 5-task Avg
 for k=1:length(df_contra_left_avg(1,:))
-    df_contra_left_avg(53,k)=mean(df_contra_left_avg(1:52,k),"omitnan");
-    df_contra_left_avg(54,k)=(std(df_contra_left_avg(1:52,k),"omitnan"))/sqrt(52);
+    df_contra_left_avg(nsub+1,k)=mean(df_contra_left_avg(1:nsub,k),"omitnan");
+    df_contra_left_avg(nsub+2,k)=(std(df_contra_left_avg(1:nsub,k),"omitnan"))/sqrt(nsub);
 end
     
 % Add error bars (standard error)
-e1 = [df_contra_left_avg(54,:)];
+e1 = [df_contra_left_avg(nsub+2,:)];
 e2 = e1*-1;
 
 figure
     
 % Specify data
 x = 1:14;
-y = [df_contra_left_avg(53,:)];
+y = [df_contra_left_avg(nsub+1,:)];
 bar(x,y);
 
 if strcmp(eig,'0')
@@ -773,19 +778,19 @@ hold off
 
 % Right Ipsilateral 5-task Avg
 for k=1:length(df_ipsi_right_avg(1,:))
-    df_ipsi_right_avg(53,k)=mean(df_ipsi_right_avg(1:52,k),"omitnan");
-    df_ipsi_right_avg(54,k)=(std(df_ipsi_right_avg(1:52,k),"omitnan"))/sqrt(52);
+    df_ipsi_right_avg(nsub+1,k)=mean(df_ipsi_right_avg(1:nsub,k),"omitnan");
+    df_ipsi_right_avg(nsub+2,k)=(std(df_ipsi_right_avg(1:nsub,k),"omitnan"))/sqrt(nsub);
 end
     
 % Add error bars (standard error)
-e1 = [df_ipsi_right_avg(54,:)];
+e1 = [df_ipsi_right_avg(nsub+2,:)];
 e2 = e1*-1;
 
 figure
     
 % Specify data
 x = 1:14;
-y = [df_ipsi_right_avg(53,:)];
+y = [df_ipsi_right_avg(nsub+1,:)];
 bar(x,y);
 
 if strcmp(eig,'0')
@@ -811,19 +816,19 @@ hold off
 
 % Right Contralateral 5-task Avg
 for k=1:length(df_contra_right_avg(1,:))
-    df_contra_right_avg(53,k)=mean(df_contra_right_avg(1:52,k),"omitnan");
-    df_contra_right_avg(54,k)=(std(df_contra_right_avg(1:52,k),"omitnan"))/sqrt(52);
+    df_contra_right_avg(nsub+1,k)=mean(df_contra_right_avg(1:nsub,k),"omitnan");
+    df_contra_right_avg(nsub+2,k)=(std(df_contra_right_avg(1:nsub,k),"omitnan"))/sqrt(nsub);
 end
     
 % Add error bars (standard error)
-e1 = [df_contra_right_avg(54,:)];
+e1 = [df_contra_right_avg(nsub+1,:)];
 e2 = e1*-1;
 
 figure
     
 % Specify data
 x = 1:14;
-y = [df_contra_right_avg(53,:)];
+y = [df_contra_right_avg(nsub+1,:)];
 bar(x,y);
 
 if strcmp(eig,'0')
@@ -847,6 +852,59 @@ er.LineStyle = 'none';
 
 hold off
 
+%% Check correlations between hemispheres within subjects
+
+% Ipsilateral
+df_full_left=readtable("df_full_left.xlsx");
+df_full_left=df_full_left{:,:};
+df_full_right=readtable("df_full_right.xlsx");
+df_full_right=df_full_right{:,:};
+df_corr=zeros(nsub,2);
+
+for cc=1:length(sub)
+    %cc=1;
+    df_corr(cc,1)=df_full_left(cc,1);
+    array_left=df_full_left(cc,2:end);
+    array_right=df_full_right(cc,2:end);
+    R=corrcoef(array_left,array_right,'rows','pairwise');
+    df_corr(cc,2)=R(1,2);
+end
+df_corr2=sortrows(df_corr,2,"ascend");
+
+figure
+scatter(1:nsub,df_corr2(:,2));
+title("Correlations across tasks & regions (ipsilateral) between left and right hemis");
+xticks(1:nsub);
+xticklabels(df_corr2(:,1));
+xlabel("Sub");
+ylabel("Correlation Coefficient (R)");
+
+% Contralateral
+df_contra_full_left=readtable("df_contra_full_left.xlsx");
+df_contra_full_left=df_contra_full_left{:,:};
+df_contra_full_right=readtable("df_contra_full_right.xlsx");
+df_contra_full_right=df_contra_full_right{:,:};
+df_contra_corr=zeros(nsub,2);
+
+for cc=1:length(sub)
+    %cc=1;
+    df_contra_corr(cc,1)=df_contra_full_left(cc,1);
+    array_contra_left=df_contra_full_left(cc,2:end);
+    array_contra_right=df_contra_full_right(cc,2:end);
+    R=corrcoef(array_contra_left,array_contra_right,'rows','pairwise');
+    df_contra_corr(cc,2)=R(1,2);
+end
+df_contra_corr2=sortrows(df_contra_corr,2,"ascend");
+
+figure
+scatter(1:nsub,df_contra_corr2(:,2));
+title("Correlations across tasks & regions (contralateral) between left and right hemis");
+xticks(1:nsub);
+xticklabels(df_contra_corr2(:,1));
+xlabel("Sub");
+ylabel("Correlation Coefficient (R)");
+
+%%
 % % Subtract signal from contralateral eye from signal from ipsilateral eye
 % % in each hemisphere:
 % h1_2_data_left = df_leftEye_leftHemi - df_rightEye_leftHemi;
