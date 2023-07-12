@@ -879,6 +879,15 @@ xticklabels(df_corr2(:,1));
 xlabel("Sub");
 ylabel("Correlation Coefficient (R)");
 
+% Histogram
+edges=[ 0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1 ];
+histogram(df_corr(:,2),edges);
+title("Correlations across tasks & regions (ipsilateral) between left and right hemis");
+xlabel("Correlation Coefficient (R)");
+ylabel("Count");
+
+mean(df_corr(:,2))
+
 % Contralateral
 df_contra_full_left=readtable("df_contra_full_left.xlsx");
 df_contra_full_left=df_contra_full_left{:,:};
