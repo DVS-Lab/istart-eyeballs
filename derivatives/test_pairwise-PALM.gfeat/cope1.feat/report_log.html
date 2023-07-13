@@ -1,0 +1,34 @@
+<HTML><HEAD>
+<!--refreshstart-->
+<META HTTP-EQUIV=REFRESH CONTENT=5>
+<!--refreshstop-->
+<link REL=stylesheet TYPE=text/css href=.files/fsl.css>
+<TITLE>FSL</TITLE></HEAD><BODY><OBJECT data=report.html></OBJECT>
+<h2>Progress Report / Log</h2>
+Started at Thu Jul 13 12:45:53 EDT 2023<p>
+<pre>
+
+cp -r ../.files .files
+</pre><hr>Higher-level stats<br><pre>
+
+cat ../design.lcon | awk '{ print  }' > design.lcon
+/usr/local/fsl/bin/flameo --cope=filtered_func_data --vc=var_filtered_func_data  --mask=mask --ld=stats --dm=design.mat --cs=design.grp --tc=design.con  --runmode=flame1
+
+nevs >= ntpts, Singular matrix.
+Log directory is: stats
+Setting up:
+ntptsing=3.000000 
+
+evs_group=1.000000 
+1.000000 
+1.000000 
+
+No f contrasts
+
+WARNING: The passed in varcope file, var_filtered_func_data, contains voxels inside the mask with zero (or negative) values. These voxels will be excluded from the analysis.
+nevs=3
+ntpts=3
+ngs=1
+nvoxels=77917
+Running:
+</pre><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></BODY></HTML>

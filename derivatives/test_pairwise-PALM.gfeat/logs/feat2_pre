@@ -1,0 +1,83 @@
+</pre><hr>Higher-level input files preparation<br><pre>
+
+/usr/local/fsl/bin/featregapply /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat
+
+/usr/local/fsl/bin/featregapply /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat
+
+/usr/local/fsl/bin/featregapply /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat
+
+/usr/local/fsl/bin/fslmaths /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg/standard bg_image
+
+/usr/local/fsl/bin/fslmerge -t mask  /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/mask /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/mask /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/mask
+
+mkdir -p inputreg
+
+/usr/local/fsl/bin/fslmaths ../mask -mul 3 -Tmean masksum -odt short
+
+/usr/local/fsl/bin/fslmaths masksum -thr 3 -add masksum masksum
+
+/usr/local/fsl/bin/overlay 0 0 -c ../bg_image -a masksum 0.9 6 masksum_overlay
+
+/usr/local/fsl/bin/slicer masksum_overlay -S 2 750 masksum_overlay.png
+
+/usr/local/fsl/bin/fslmaths masksum -mul 0 maskunique
+
+/usr/local/fsl/bin/fslmaths /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/mask -mul -1 -add 1 -mul 1 -add maskunique maskunique
+
+/usr/local/fsl/bin/fslmaths /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/mask -mul -1 -add 1 -mul 2 -add maskunique maskunique
+
+/usr/local/fsl/bin/fslmaths /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/mask -mul -1 -add 1 -mul 3 -add maskunique maskunique
+
+/usr/local/fsl/bin/fslmaths masksum -thr 2 -uthr 2 -bin -mul maskunique maskunique
+
+/usr/local/fsl/bin/overlay 0 0 ../bg_image -a maskunique 0.9 3 maskunique_overlay
+
+/usr/local/fsl/bin/slicer maskunique_overlay -S 2 750 maskunique_overlay.png
+
+/bin/cp /usr/local/fsl/etc/luts/ramp.gif .ramp.gif
+
+/usr/local/fsl/bin/fslmaths mask -Tmin mask
+
+/usr/local/fsl/bin/fslmerge -t mean_func  /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/mean_func /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/mean_func /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/mean_func
+
+/usr/local/fsl/bin/fslmaths mean_func -Tmean mean_func
+
+/usr/local/fsl/bin/fslmerge -t cope1  /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/stats/cope1 /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/stats/cope1 /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/stats/cope1
+
+/usr/local/fsl/bin/fslmaths cope1 -mas mask cope1
+
+printf '0.2527409 ' >> design.lcon
+
+/usr/local/fsl/bin/fslmerge -t varcope1  /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/stats/varcope1 /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/stats/varcope1 /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/stats/varcope1
+
+/usr/local/fsl/bin/fslmaths varcope1 -mas mask varcope1
+
+/usr/local/fsl/bin/fslmerge -t cope2  /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/stats/cope2 /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/stats/cope2 /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/stats/cope2
+
+/usr/local/fsl/bin/fslmaths cope2 -mas mask cope2
+
+printf '0.2752777 ' >> design.lcon
+
+/usr/local/fsl/bin/fslmerge -t varcope2  /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/stats/varcope2 /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/stats/varcope2 /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/stats/varcope2
+
+/usr/local/fsl/bin/fslmaths varcope2 -mas mask varcope2
+
+/usr/local/fsl/bin/fslmerge -t cope3  /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/stats/cope3 /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/stats/cope3 /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/stats/cope3
+
+/usr/local/fsl/bin/fslmaths cope3 -mas mask cope3
+
+printf '0.7189439 ' >> design.lcon
+
+/usr/local/fsl/bin/fslmerge -t varcope3  /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/stats/varcope3 /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/stats/varcope3 /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/stats/varcope3
+
+/usr/local/fsl/bin/fslmaths varcope3 -mas mask varcope3
+
+/usr/local/fsl/bin/fslmerge -t cope4  /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/stats/cope4 /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/stats/cope4 /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/stats/cope4
+
+/usr/local/fsl/bin/fslmaths cope4 -mas mask cope4
+
+printf '0.3042365 ' >> design.lcon
+
+/usr/local/fsl/bin/fslmerge -t varcope4  /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/stats/varcope4 /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/stats/varcope4 /Users/jameswyngaarden/Documents/GitHub/istart-eyeballs/derivatives/L1_task-doors_model-1_type-act_run-1_sm-6.feat/reg_standard/stats/varcope4
+
+/usr/local/fsl/bin/fslmaths varcope4 -mas mask varcope4

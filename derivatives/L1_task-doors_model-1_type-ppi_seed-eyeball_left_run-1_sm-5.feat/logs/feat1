@@ -1,0 +1,21 @@
+
+/bin/cp /data/projects/istart-eyeballs/derivatives/fsl/sub-1011/L1_sub-1011_task-doors_model-1_type-ppi_run-1.fsf design.fsf
+
+/usr/share/fsl/6.0.4/bin/feat_model design
+
+mkdir .files;cp /usr/share/fsl/6.0.4/doc/fsl.css .files;cp -r /usr/share/fsl/6.0.4/doc/images .files/images
+
+/usr/share/fsl/6.0.4/bin/fsl_sub -T 10 -l logs -N feat0_init   /usr/share/fsl/6.0.4/bin/feat /data/projects/istart-eyeballs/derivatives/fsl/sub-1011/L1_task-doors_model-1_type-ppi_seed-eyeball_left_run-1_sm-5.feat/design.fsf -D /data/projects/istart-eyeballs/derivatives/fsl/sub-1011/L1_task-doors_model-1_type-ppi_seed-eyeball_left_run-1_sm-5.feat -I 1 -init
+3241274
+
+/usr/share/fsl/6.0.4/bin/fsl_sub -T 95 -l logs -N feat2_pre -j 3241274  /usr/share/fsl/6.0.4/bin/feat /data/projects/istart-eyeballs/derivatives/fsl/sub-1011/L1_task-doors_model-1_type-ppi_seed-eyeball_left_run-1_sm-5.feat/design.fsf -D /data/projects/istart-eyeballs/derivatives/fsl/sub-1011/L1_task-doors_model-1_type-ppi_seed-eyeball_left_run-1_sm-5.feat -I 1 -prestats
+3243338
+
+/usr/share/fsl/6.0.4/bin/fsl_sub -T 81 -l logs -N feat3_film -j 3243338  /usr/share/fsl/6.0.4/bin/feat /data/projects/istart-eyeballs/derivatives/fsl/sub-1011/L1_task-doors_model-1_type-ppi_seed-eyeball_left_run-1_sm-5.feat/design.fsf -D /data/projects/istart-eyeballs/derivatives/fsl/sub-1011/L1_task-doors_model-1_type-ppi_seed-eyeball_left_run-1_sm-5.feat -I 1 -stats
+3253484
+
+/usr/share/fsl/6.0.4/bin/fsl_sub -T 119 -l logs -N feat4_post -j 3253484  /usr/share/fsl/6.0.4/bin/feat /data/projects/istart-eyeballs/derivatives/fsl/sub-1011/L1_task-doors_model-1_type-ppi_seed-eyeball_left_run-1_sm-5.feat/design.fsf -D /data/projects/istart-eyeballs/derivatives/fsl/sub-1011/L1_task-doors_model-1_type-ppi_seed-eyeball_left_run-1_sm-5.feat -poststats 0 
+3275792
+
+/usr/share/fsl/6.0.4/bin/fsl_sub -T 1 -l logs -N feat5_stop -j 3243338,3253484,3275792  /usr/share/fsl/6.0.4/bin/feat /data/projects/istart-eyeballs/derivatives/fsl/sub-1011/L1_task-doors_model-1_type-ppi_seed-eyeball_left_run-1_sm-5.feat/design.fsf -D /data/projects/istart-eyeballs/derivatives/fsl/sub-1011/L1_task-doors_model-1_type-ppi_seed-eyeball_left_run-1_sm-5.feat -stop
+3281499
