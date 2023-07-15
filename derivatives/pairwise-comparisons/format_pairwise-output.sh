@@ -6,7 +6,7 @@ for comp in "doors-mid" "doors-social" "doors-sr" "doors-ugdg" "social-mid" "soc
 #		for stat in "tstat" "tstat_uncp" "tstat_fwep" "tstat_cfwep"; do
 		for stat in "tstat_fwep"; do
 #			for con in "1" "2" "3" "4"; do
-			for con in "3" "4"; do
+			for con in "1" "2"; do
 				INPUT=${comp}/${hemi}/${comp}_output_dat_${stat}_c${con}.csv
 				OLDIFS=$IFS
 				IFS=','
