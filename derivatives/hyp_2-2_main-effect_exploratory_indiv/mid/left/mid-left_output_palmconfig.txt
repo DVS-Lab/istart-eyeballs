@@ -1,0 +1,11 @@
+# Configuration file for PALM.
+# Version alpha119, running in MATLAB 9.12.0.1884302 (R2022a).
+# 17-Jul-2023 12:56:05
+
+-i ../data_mid-left.csv
+-d ../design.mat
+-t ../design.con
+-o mid-left_output
+-corrcon
+-ise
+-ee

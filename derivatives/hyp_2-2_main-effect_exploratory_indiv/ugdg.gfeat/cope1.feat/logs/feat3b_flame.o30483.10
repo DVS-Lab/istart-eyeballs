@@ -1,0 +1,19 @@
+Log directory is: stats0009
+Setting up:
+ntptsing=46.000000 
+
+evs_group=1.000000 
+1.000000 
+1.000000 
+1.000000 
+
+No f contrasts
+
+WARNING: The passed in varcope file, tmpvarcope0009, contains voxels inside the mask with zero (or negative) values. These voxels will be excluded from the analysis.
+nevs=4
+ntpts=46
+ngs=1
+nvoxels=627
+Running:
+nmaskvoxels=627
+ 1 2

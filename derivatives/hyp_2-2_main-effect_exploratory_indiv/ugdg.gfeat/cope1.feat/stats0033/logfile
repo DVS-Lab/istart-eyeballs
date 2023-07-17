@@ -1,0 +1,3 @@
+/usr/local/fsl/bin/flameo --cope=tmpcope0033 --vc=tmpvarcope0033 --mask=tmpmask0033 --ld=stats0033 --dm=design.mat --cs=design.grp --tc=design.con --runmode=flame1 
+---------------------------------------------
+
