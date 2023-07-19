@@ -1,0 +1,11 @@
+# Configuration file for PALM.
+# Version alpha119, running in MATLAB 9.12.0.1884302 (R2022a).
+# 18-Jul-2023 14:48:13
+
+-i ../data_gsr-2-1_right.csv
+-d ../design.mat
+-t ../design.con
+-o gsr_two-one_output
+-corrcon
+-ise
+-ee

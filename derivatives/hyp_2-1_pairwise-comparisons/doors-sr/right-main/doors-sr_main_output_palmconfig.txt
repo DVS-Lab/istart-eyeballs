@@ -1,0 +1,11 @@
+# Configuration file for PALM.
+# Version alpha119, running in MATLAB 9.12.0.1884302 (R2022a).
+# 17-Jul-2023 15:32:34
+
+-i ../data_doors-sr_right.csv
+-d ../design_main.mat
+-t ../design_main.con
+-o doors-sr_main_output
+-corrcon
+-ise
+-ee

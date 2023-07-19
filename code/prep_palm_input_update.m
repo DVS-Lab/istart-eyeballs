@@ -548,7 +548,7 @@ for h = 1:length(hemi)
     ylabel('zstat');
     xlabel('CB Subregion');
     %xline([1.5 2.5 3.5 4.5 5.5 6.5 7.5 8.5 9.5 10.5 11.5 12.5 13.5]);
-    ylim([-.3 .2]);
+    ylim([-.4 .2]);
     leg = {'Two-Stim', 'One-Stim'};
     legend(leg,'Location','southwest');
     
@@ -882,7 +882,7 @@ ylabel("Correlation Coefficient (R)");
 % Histogram
 edges=[ 0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1 ];
 histogram(df_corr(:,2),edges);
-title("Correlations across tasks & regions (ipsilateral) between left and right hemis");
+%title("Correlations across tasks & regions (ipsilateral) between left and right hemis");
 xlabel("Correlation Coefficient (R)");
 ylabel("Count");
 

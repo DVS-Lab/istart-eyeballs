@@ -1,0 +1,10 @@
+# Configuration file for PALM.
+# Version alpha119, running in MATLAB 9.12.0.1884302 (R2022a).
+# 17-Jul-2023 19:31:51
+
+-i ../data_ugdg-sr_left.csv
+-d ../design_main.mat
+-t ../design_main.con
+-o ugdg-sr_main_output_ise-ee
+-ise
+-ee
