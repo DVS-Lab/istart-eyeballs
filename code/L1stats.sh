@@ -69,7 +69,6 @@ else
 	SHAPE_FRIENDN=10
 fi
 
-
 # for eyeball~cerebellum analyses we only need seed-based ppi
 TYPE=ppi
 if [ ${eig} -eq 0 ]; then
@@ -77,7 +76,6 @@ if [ ${eig} -eq 0 ]; then
 else
 	OUTPUT=${MAINOUTPUT}/L1_task-${TASK}_model-1_type-${TYPE}_seed-${ppi}_run-${run}_sm-${sm}_eig
 fi
-
 
 # check for output and skip existing
 if [ -e ${OUTPUT}.feat/cluster_mask_zstat1.nii.gz ]; then
@@ -91,9 +89,14 @@ fi
 ITEMPLATE=${maindir}/templates/L1_task-${TASK}_model-1_type-${TYPE}.fsf
 OTEMPLATE=${MAINOUTPUT}/L1_sub-${sub}_task-${TASK}_model-1_type-${TYPE}_run-${run}.fsf
 
-PHYS=${MAINOUTPUT}/ts_task-${TASK}_mask-${ppi}_run-${run}.txt
+if [ ${eig} -eq 0 ]; then
+	PHYS=${MAINOUTPUT}/ts_task-${TASK}_mask-${ppi}_run-${run}.txt
+else
+	PHYS=${MAINOUTPUT}/ts_task-${TASK}_mask-${ppi}_run-${run}_eig.txt
+fi
+
 MASK=${maindir}/masks/seed-${ppi}.nii.gz
-if [ ${eig} -eq 0 ];then
+if [ ${eig} -eq 0 ]; then
 	fslmeants -i $DATA -o $PHYS -m $MASK
 else
 	fslmeants -i $DATA -o $PHYS -m $MASK --eig
